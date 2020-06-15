@@ -1,0 +1,7 @@
+span :hover {
+  color: red;
+}
+
+Button:hover {
+  color: red;
+}
