@@ -1,10 +1,11 @@
 import React from 'react';
 import './homepage.styles.scss';
 
-import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
-import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import NavBar from '../navbar/havbar.component';
+
+import { Button } from '@material-ui/core';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
+import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 
 class HomePage extends React.Component {
   constructor() {
@@ -17,25 +18,21 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <AppBar position='static' color='transparent'>
-        <Toolbar className='nav-bar'>
-          <div className='buttons'>
-            <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
-            <Button endIcon={<PlaylistPlayIcon />}>Will watch</Button>
-            <Button endIcon={<FavoriteIcon />}>Favorite</Button>
-          </div>
-
-          <div className='user-data'>
-            <Typography className='name' variant='h6'>
-              {this.state.name}
-            </Typography>
-            <Avatar
-              alt={this.state.name}
-              src='/src/assets/images/kseniia.jpg'
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
+      <div>
+        <NavBar userName={this.state.name}></NavBar>
+        <div className='greetings'>
+          <h1>Welcome to MyMovies!</h1>
+          <h3>Let's collect your movies!</h3>
+        </div>
+        <div className='select-buttons'>
+          <Button endIcon={<BorderColorIcon />} variant='contained'>
+            Add Review
+          </Button>
+          <Button endIcon={<MovieFilterIcon />} variant='contained'>
+            Select Next Movie
+          </Button>
+        </div>
+      </div>
     );
   }
 }
