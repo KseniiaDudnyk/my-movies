@@ -1,0 +1,18 @@
+.nav-bar {
+  .buttons {
+    width: 60%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .user-data {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    cursor: default;
+
+    .name {
+      margin-right: 20px;
+    }
+  }
+}
