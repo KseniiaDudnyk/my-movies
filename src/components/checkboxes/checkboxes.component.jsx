@@ -1,6 +1,9 @@
 import React from 'react';
+
 import Checkbox from '@material-ui/core/Checkbox';
 import { FormGroup, FormControlLabel } from '@material-ui/core';
+
+import './checkboxes.styles.scss';
 
 export default function Checkboxes() {
   const genres = [
@@ -35,10 +38,11 @@ export default function Checkboxes() {
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+    console.log({ [event.target.name]: event.target.checked });
   };
 
   return (
-    <div>
+    <div className='checkboxes-container'>
       <FormGroup row>
         {genres.map((genre) => (
           <FormControlLabel

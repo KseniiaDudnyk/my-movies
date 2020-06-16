@@ -24,6 +24,7 @@ class ReviewInput extends React.Component {
             id='outlined-basic'
             variant='outlined'
             label='Title'
+            color='secondary'
           />
           <TextField
             className='review'
@@ -32,6 +33,7 @@ class ReviewInput extends React.Component {
             label='Review'
             variant='outlined'
             rows={20}
+            color='secondary'
           />
 
           <div className='upload-img'>
