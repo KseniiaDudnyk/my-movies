@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './movie-rate.styles.scss';
+
+import { addMovieRate } from '../../redux/reviews/review.actions';
 
 import {
   Radio,
@@ -10,7 +13,7 @@ import {
   FormLabel,
 } from '@material-ui/core';
 
-export default function RadioButtonsGroup() {
+const MovieRate = ({ addMovieRate }) => {
   const rateArr = Array(10)
     .fill(1)
     .map((i, idx) => (idx + i).toString());
@@ -19,6 +22,7 @@ export default function RadioButtonsGroup() {
 
   const handleChange = (event) => {
     setValue(event.target.value);
+    addMovieRate(event.target.value);
   };
 
   return (
@@ -44,4 +48,10 @@ export default function RadioButtonsGroup() {
       </FormControl>
     </div>
   );
-}
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addMovieRate: (rate) => dispatch(addMovieRate(rate)),
+});
+
+export default connect(null, mapDispatchToProps)(MovieRate);

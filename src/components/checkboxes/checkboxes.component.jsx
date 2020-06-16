@@ -1,7 +1,11 @@
 import React from 'react';
 
-import Checkbox from '@material-ui/core/Checkbox';
-import { FormGroup, FormControlLabel, FormLabel } from '@material-ui/core';
+import {
+  FormGroup,
+  FormControlLabel,
+  FormLabel,
+  Checkbox,
+} from '@material-ui/core';
 
 import './checkboxes.styles.scss';
 
@@ -27,7 +31,7 @@ export default function Checkboxes() {
     let someMap = new Map();
 
     genres.map((genre) => {
-      someMap.set(genre, false);
+      return someMap.set(genre, false);
     });
     return Object.fromEntries(someMap.entries());
   };
