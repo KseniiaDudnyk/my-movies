@@ -1,0 +1,9 @@
+.rate-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .radio-group {
+    flex-direction: row;
+  }
+}

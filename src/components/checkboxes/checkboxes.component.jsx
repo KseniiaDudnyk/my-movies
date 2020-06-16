@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Checkbox from '@material-ui/core/Checkbox';
-import { FormGroup, FormControlLabel } from '@material-ui/core';
+import { FormGroup, FormControlLabel, FormLabel } from '@material-ui/core';
 
 import './checkboxes.styles.scss';
 
@@ -43,6 +43,7 @@ export default function Checkboxes() {
 
   return (
     <div className='checkboxes-container'>
+      <FormLabel component='legend'>Select movie genres</FormLabel>
       <FormGroup row>
         {genres.map((genre) => (
           <FormControlLabel
