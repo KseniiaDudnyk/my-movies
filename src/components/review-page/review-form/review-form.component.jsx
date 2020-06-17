@@ -1,21 +1,21 @@
 import React from 'react';
 
-import './review.styles.scss';
+import './review-form.styles.scss';
 
 import { Button } from '@material-ui/core';
 
 import ReviewInput from '../review-input/review-input.component';
-import Checkboxes from '../checkboxes/checkboxes.component';
+import MovieGenres from '../movie-genres/movie-genres.component';
 import MovieRate from '../movie-rate/movie-rate.component';
 
 const submitReview = () => {
   console.log('hi');
 };
 
-const Review = () => (
+const ReviewForm = () => (
   <div>
     <ReviewInput />
-    <Checkboxes />
+    <MovieGenres />
     <MovieRate />
     <div className='submit-btn'>
       <Button variant='contained' component='span' onClick={submitReview}>
@@ -25,4 +25,4 @@ const Review = () => (
   </div>
 );
 
-export default Review;
+export default ReviewForm;

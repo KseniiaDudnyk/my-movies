@@ -7,9 +7,9 @@ import {
   Checkbox,
 } from '@material-ui/core';
 
-import './checkboxes.styles.scss';
+import './movie-genres.styles.scss';
 
-export default function Checkboxes() {
+const MovieGenres = () => {
   const genres = [
     'comedy',
     'horror',
@@ -65,4 +65,6 @@ export default function Checkboxes() {
       </FormGroup>
     </div>
   );
-}
+};
+
+export default MovieGenres;

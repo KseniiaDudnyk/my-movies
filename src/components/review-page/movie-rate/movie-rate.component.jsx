@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './movie-rate.styles.scss';
 
-import { addMovieRate } from '../../redux/reviews/review.actions';
+import { addMovieRate } from '../../../redux/reviews/review.actions';
 
 import {
   Radio,
@@ -18,7 +18,7 @@ const MovieRate = ({ addMovieRate }) => {
     .fill(1)
     .map((i, idx) => (idx + i).toString());
 
-  const [value, setValue] = React.useState('5');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);

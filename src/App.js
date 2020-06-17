@@ -5,7 +5,7 @@ import './App.css';
 
 import HomePage from './components/homepage/homepage.component';
 import NavBar from './components/navbar/havbar.component';
-import Review from './components/review/review.component';
+import ReviewForm from './components/review-page/review-form/review-form.component';
 
 class App extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class App extends React.Component {
         <NavBar />
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/review' component={Review} />
+          <Route path='/review' component={ReviewForm} />
         </Switch>
       </div>
     );

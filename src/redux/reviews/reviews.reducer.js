@@ -2,7 +2,7 @@ import { ReviewsActionTypes } from './reviews.types';
 
 const INITIAL_STATE = {
   allReviews: [],
-  movieRate: '',
+  movieRate: '0',
 };
 
 const reviewsReducer = (state = INITIAL_STATE, action) => {
