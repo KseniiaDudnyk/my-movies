@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
-import HomePage from './components/homepage/homepage.component';
+import HomePage from './pages/homepage/homepage.component';
 import NavBar from './components/navbar/havbar.component';
-import ReviewForm from './components/review-page/review-form/review-form.component';
+import ReviewForm from './pages/review/review-form.component';
 
 class App extends React.Component {
   render() {

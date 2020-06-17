@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './homepage.styles.scss';
 
 import { Button } from '@material-ui/core';
@@ -12,9 +14,12 @@ const HomePage = () => (
       <h3>Let's collect your movies!</h3>
     </div>
     <div className='select-buttons'>
-      <Button endIcon={<BorderColorIcon />} variant='contained'>
-        Add Review
-      </Button>
+      <Link to='/review'>
+        <Button endIcon={<BorderColorIcon />} variant='contained'>
+          Add Review
+        </Button>
+      </Link>
+
       <Button endIcon={<MovieFilterIcon />} variant='contained'>
         Select Next Movie
       </Button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
 
 import './submit-button.styles.scss';
 
@@ -13,35 +14,31 @@ import {
   selectMoviePosterLink,
 } from '../../../redux/review-inputs/review-inputs.selectors';
 
-class SubmitButton extends React.Component {
-  currentMovieRate;
-  currentMovieGenres;
-  currentMovieTitle;
-  currentMovieReview;
-  currentMoviePosterLink;
-
-  submitReview = () => {
-    this.currentMovieRate = this.props.movieRate;
-    this.currentMovieGenres = this.props.movieGenres;
-    this.currentMovieTitle = this.props.movieTitle;
-    this.currentMovieReview = this.props.movieReview;
-    this.currentMoviePosterLink = this.props.moviePosterLink;
+const SubmitButton = ({
+  history,
+  movieRate,
+  movieGenres,
+  movieTitle,
+  movieReview,
+  moviePosterLink,
+}) => {
+  const submitReview = () => {
+    let currentMovieRate = movieRate;
+    let currentMovieGenres = movieGenres;
+    let currentMovieTitle = movieTitle;
+    let currentMovieReview = movieReview;
+    let currentMoviePosterLink = moviePosterLink;
+    history.push('/');
   };
 
-  render() {
-    return (
-      <div className='submit-btn'>
-        <Button
-          variant='contained'
-          component='span'
-          onClick={this.submitReview}
-        >
-          Save Review
-        </Button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className='submit-btn'>
+      <Button variant='contained' component='span' onClick={submitReview}>
+        Save Review
+      </Button>
+    </div>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   movieRate: selectMovieRate,
@@ -51,4 +48,4 @@ const mapStateToProps = createStructuredSelector({
   moviePosterLink: selectMoviePosterLink,
 });
 
-export default connect(mapStateToProps)(SubmitButton);
+export default withRouter(connect(mapStateToProps)(SubmitButton));
