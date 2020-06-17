@@ -24,3 +24,7 @@ export const addMoviePosterLink = (link) => ({
   type: ReviewActionTypes.ADD_MOVIE_POSTER_LINK,
   payload: link,
 });
+
+export const resetReviewInputReducerData = () => ({
+  type: ReviewActionTypes.RESET_REDUCER_DATA,
+});

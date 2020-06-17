@@ -40,6 +40,11 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
         moviePosterLink: action.payload,
       };
 
+    case ReviewActionTypes.RESET_REDUCER_DATA:
+      return {
+        state: INITIAL_STATE,
+      };
+
     default:
       return state;
   }
