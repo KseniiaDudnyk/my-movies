@@ -5,8 +5,9 @@ import { withRouter } from 'react-router-dom';
 
 import './submit-button.styles.scss';
 
-import { Button, DialogTitle, Dialog } from '@material-ui/core';
-import PropTypes from 'prop-types';
+import { Button } from '@material-ui/core';
+
+import SimpleDialog from '../../simple-dialog/simple-dialog.component';
 
 import {
   selectMovieRate,
@@ -17,31 +18,6 @@ import {
 } from '../../../redux/review-inputs/review-inputs.selectors';
 import { resetReviewInputReducerData } from '../../../redux/review-inputs/review-inputs.actions';
 import { addMovieReviewData } from '../../../redux/reviews-data/reviews-data.actions';
-
-const SimpleDialog = (props) => {
-  const { onClose, open } = props;
-
-  const handleClose = () => {
-    onClose();
-  };
-
-  return (
-    <Dialog
-      onClose={handleClose}
-      aria-labelledby='simple-dialog-title'
-      open={open}
-    >
-      <DialogTitle id='simple-dialog-title'>
-        Please fill review form
-      </DialogTitle>
-    </Dialog>
-  );
-};
-
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-};
 
 const SubmitButton = ({
   history,
@@ -82,7 +58,6 @@ const SubmitButton = ({
         rate: currentMovieRate,
         posterUrl: currentMoviePosterLink,
       });
-
       resetReviewInputReducerData();
       history.push('/');
     }
