@@ -5,13 +5,19 @@ form {
   justify-content: center;
   margin-top: 50px;
 
-  .title {
+  .title,
+  .review {
     width: 60%;
     margin-bottom: 20px;
   }
 
-  .review {
-    width: 60%;
+  .poster {
+    width: 50%;
+    margin-right: 45px;
+
+    .poster-upload-btn {
+      width: 10%;
+    }
   }
 }
 

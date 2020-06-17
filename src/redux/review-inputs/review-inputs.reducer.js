@@ -1,36 +1,43 @@
-import { ReviewsActionTypes } from './review-inputs.types';
+import { ReviewActionTypes } from './review-inputs.types';
 
 const INITIAL_STATE = {
   movieRate: '0',
   movieGenres: [],
   movieTitle: '',
   movieReview: '',
+  moviePosterLink: '',
 };
 
-const reviewsReducer = (state = INITIAL_STATE, action) => {
+const reviewReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ReviewsActionTypes.ADD_MOVIE_RATE:
+    case ReviewActionTypes.ADD_MOVIE_RATE:
       return {
         ...state,
         movieRate: action.payload,
       };
 
-    case ReviewsActionTypes.ADD_MOVIE_GENRE:
+    case ReviewActionTypes.ADD_MOVIE_GENRE:
       return {
         ...state,
         movieGenres: action.payload,
       };
 
-    case ReviewsActionTypes.ADD_MOVIE_TITLE:
+    case ReviewActionTypes.ADD_MOVIE_TITLE:
       return {
         ...state,
         movieTitle: action.payload,
       };
 
-    case ReviewsActionTypes.ADD_MOVIE_REVIEW:
+    case ReviewActionTypes.ADD_MOVIE_REVIEW:
       return {
         ...state,
         movieReview: action.payload,
+      };
+
+    case ReviewActionTypes.ADD_MOVIE_POSTER_LINK:
+      return {
+        ...state,
+        moviePosterLink: action.payload,
       };
 
     default:
@@ -38,4 +45,4 @@ const reviewsReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default reviewsReducer;
+export default reviewReducer;

@@ -1,6 +1,7 @@
-export const ReviewsActionTypes = {
+export const ReviewActionTypes = {
   ADD_MOVIE_RATE: 'ADD_MOVIE_RATE',
   ADD_MOVIE_GENRE: 'ADD_MOVIE_GENRE',
   ADD_MOVIE_TITLE: 'ADD_MOVIE_TITLE',
   ADD_MOVIE_REVIEW: 'ADD_MOVIE_REVIEW',
+  ADD_MOVIE_POSTER_LINK: 'ADD_MOVIE_POSTER_LINK',
 };
