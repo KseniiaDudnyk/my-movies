@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import './movie-genres.styles.scss';
 
 import {
   FormGroup,
@@ -7,9 +10,9 @@ import {
   Checkbox,
 } from '@material-ui/core';
 
-import './movie-genres.styles.scss';
+import { addMovieGenre } from '../../../redux/review-inputs/review-inputs.actions';
 
-const MovieGenres = () => {
+const MovieGenres = ({ addMovieGenre }) => {
   const genres = [
     'comedy',
     'horror',
@@ -40,9 +43,28 @@ const MovieGenres = () => {
 
   const [state, setState] = React.useState({ ...obj });
 
+  const selectedGenres = [];
+
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-    console.log({ [event.target.name]: event.target.checked });
+    let name = event.target.name;
+    let checked = event.target.checked;
+
+    if (!checked) {
+      let index = selectedGenres
+        .map((genre) => {
+          return genre[name];
+        })
+        .indexOf(true);
+
+      selectedGenres.splice(index, 1);
+    } else {
+      selectedGenres.push({ [name]: checked });
+    }
+
+    addMovieGenre(selectedGenres);
+
+    // If to do setState() array will be empty each handleChange call
+    // setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
@@ -67,4 +89,8 @@ const MovieGenres = () => {
   );
 };
 
-export default MovieGenres;
+const mapDispatchToProps = (dispatch) => ({
+  addMovieGenre: (genre) => dispatch(addMovieGenre(genre)),
+});
+
+export default connect(null, mapDispatchToProps)(MovieGenres);

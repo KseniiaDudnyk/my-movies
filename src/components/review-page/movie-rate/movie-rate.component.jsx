@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import './movie-rate.styles.scss';
 
-import { addMovieRate } from '../../../redux/reviews/review.actions';
-
 import {
   Radio,
   RadioGroup,
@@ -12,6 +10,8 @@ import {
   FormControl,
   FormLabel,
 } from '@material-ui/core';
+
+import { addMovieRate } from '../../../redux/review-inputs/review-inputs.actions';
 
 const MovieRate = ({ addMovieRate }) => {
   const rateArr = Array(10)

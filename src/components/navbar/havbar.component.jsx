@@ -23,7 +23,7 @@ class NavBar extends React.Component {
             <Button endIcon={<PlaylistPlayIcon />}>Will watch</Button>
             <Button endIcon={<FavoriteIcon />}>Favorite</Button>
           </div>
-          npm i --save redux-logger
+
           <div className='user-data'>
             <Typography className='name' variant='h6'>
               {this.props.name}
