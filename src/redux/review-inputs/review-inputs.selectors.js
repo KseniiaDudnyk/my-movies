@@ -1,28 +1,28 @@
 import { createSelector } from 'reselect';
 
-const selectReview = (state) => state.review;
+const selectReview = (state) => state.reviewInput;
 
 export const selectMovieRate = createSelector(
   [selectReview],
-  (review) => review.movieRate
+  (reviewInput) => reviewInput.movieRate
 );
 
 export const selectMovieGenres = createSelector(
   [selectReview],
-  (review) => review.movieGenres
+  (reviewInput) => reviewInput.movieGenres
 );
 
 export const selectMovieTitle = createSelector(
   [selectReview],
-  (review) => review.movieTitle
+  (reviewInput) => reviewInput.movieTitle
 );
 
 export const selectMovieReview = createSelector(
   [selectReview],
-  (review) => review.movieReview
+  (reviewInput) => reviewInput.movieReview
 );
 
 export const selectMoviePosterLink = createSelector(
   [selectReview],
-  (review) => review.moviePosterLink
+  (reviewInput) => reviewInput.moviePosterLink
 );

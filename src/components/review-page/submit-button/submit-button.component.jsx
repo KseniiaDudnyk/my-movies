@@ -57,6 +57,7 @@ const SubmitButton = ({
         genres: currentMovieGenres,
         rate: currentMovieRate,
         posterUrl: currentMoviePosterLink,
+        isReviewTextHidden: true,
       });
       resetReviewInputReducerData();
       history.push('/');

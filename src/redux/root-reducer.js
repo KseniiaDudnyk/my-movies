@@ -6,6 +6,6 @@ import reviewsDataReducer from './reviews-data/reviews-data.reducer';
 
 export default combineReducers({
   user: userReducer,
-  review: reviewReducer,
+  reviewInput: reviewReducer,
   reviewsData: reviewsDataReducer,
 });
