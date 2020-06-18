@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -19,7 +20,9 @@ class NavBar extends React.Component {
       <AppBar position='static' color='transparent'>
         <Toolbar className='nav-bar'>
           <div className='buttons'>
-            <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
+            <Link to='/watched'>
+              <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
+            </Link>
             <Button endIcon={<PlaylistPlayIcon />}>Will watch</Button>
             <Button endIcon={<FavoriteIcon />}>Favorite</Button>
           </div>

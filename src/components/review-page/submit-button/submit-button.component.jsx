@@ -60,7 +60,7 @@ const SubmitButton = ({
         isReviewTextHidden: true,
       });
       resetReviewInputReducerData();
-      history.push('/');
+      history.push('/watched');
     }
   };
 

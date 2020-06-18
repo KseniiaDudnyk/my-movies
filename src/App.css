@@ -5,3 +5,7 @@ span :hover {
 Button:hover {
   color: red;
 }
+
+a {
+  text-decoration: none;
+}
