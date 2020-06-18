@@ -5,47 +5,51 @@ const INITIAL_STATE = {
     {
       title: 'Pulp Fiction',
       review:
-        'Great Great Great Great Great Great GreatGreatGreat Great Great Great Great Great Great  Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great Great v v Great GreatGreat Great Great Great',
-      genres: ['comedy'],
+        'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.',
+      genres: ['comedy', 'crime', 'drama'],
       rate: '10',
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
       isReviewTextHidden: true,
     },
     {
-      title: 'Pulp Fiction1',
-      review: 'Great',
-      genres: ['comedy'],
-      rate: '10',
+      title: 'Fight Club',
+      review:
+        'An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.',
+      genres: ['drama'],
+      rate: '8',
       posterUrl:
-        'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
+        'https://upload.wikimedia.org/wikipedia/ru/thumb/8/8a/Fight_club.jpg/239px-Fight_club.jpg',
       isReviewTextHidden: true,
     },
     {
-      title: 'Pulp Fiction2',
-      review: 'Great',
-      genres: ['comedy'],
-      rate: '10',
+      title: 'The Matrix',
+      review:
+        'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.',
+      genres: ['action', 'sci-fi'],
+      rate: '9',
       posterUrl:
-        'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
+        'https://upload.wikimedia.org/wikipedia/ru/thumb/9/9d/Matrix-DVD.jpg/217px-Matrix-DVD.jpg',
       isReviewTextHidden: true,
     },
     {
-      title: 'Pulp Fiction3',
-      review: 'Great',
-      genres: ['comedy'],
+      title: 'Inception',
+      review:
+        'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
+      genres: ['action', 'sci-fi', 'adventure', 'thriller'],
       rate: '10',
       posterUrl:
-        'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
+        'https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg',
       isReviewTextHidden: true,
     },
     {
-      title: 'Pulp Fiction4',
-      review: 'Great',
-      genres: ['comedy'],
+      title: 'Jojo Rabbit',
+      review:
+        'A young boy in Hitler`s army finds out his mother is hiding a Jewish girl in their home.',
+      genres: ['comedy', 'drama', 'war'],
       rate: '10',
       posterUrl:
-        'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
+        'https://upload.wikimedia.org/wikipedia/en/a/a2/Jojo_Rabbit_%282019%29_poster.jpg',
       isReviewTextHidden: true,
     },
   ],

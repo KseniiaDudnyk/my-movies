@@ -18,7 +18,7 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
               toggleReviewTextHidden(movie.title);
             }}
           >
-            more...
+            more
           </span>
         </Typography>
       </div>
@@ -30,7 +30,7 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
             className='toggle-text'
             onClick={() => toggleReviewTextHidden(movie.title)}
           >
-            less...
+            less
           </span>
         </Typography>
       </div>

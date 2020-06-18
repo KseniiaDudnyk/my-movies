@@ -28,6 +28,7 @@ const MovieGenres = ({ addMovieGenre }) => {
     'fantasy',
     'LGBT',
     'cartoon',
+    'thriller',
   ];
 
   const generate = () => {
