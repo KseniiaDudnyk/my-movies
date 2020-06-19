@@ -9,6 +9,8 @@ import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
+import HomeIcon from '@material-ui/icons/Home';
 import {
   selectUserName,
   selectUserImage,
@@ -19,12 +21,18 @@ class NavBar extends React.Component {
     return (
       <AppBar position='static' color='transparent'>
         <Toolbar className='nav-bar'>
+          <Link to='/'>
+            <HomeIcon />
+          </Link>
           <div className='buttons'>
             <Link to='/watched'>
               <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
             </Link>
-            <Button endIcon={<PlaylistPlayIcon />}>Will watch</Button>
+            <Button endIcon={<PlaylistPlayIcon />}>Next To Watch</Button>
             <Button endIcon={<FavoriteIcon />}>Favorite</Button>
+            <Link to='/review'>
+              <Button endIcon={<BorderColorIcon />}>Add Review</Button>
+            </Link>
           </div>
 
           <div className='user-data'>

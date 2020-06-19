@@ -5,7 +5,7 @@ import './homepage.styles.scss';
 
 import { Button } from '@material-ui/core';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
-import MovieFilterIcon from '@material-ui/icons/MovieFilter';
+import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 
 const HomePage = () => (
   <div>
@@ -20,8 +20,8 @@ const HomePage = () => (
         </Button>
       </Link>
 
-      <Button endIcon={<MovieFilterIcon />} variant='contained'>
-        Select Next Movie
+      <Button endIcon={<PlaylistPlayIcon />} variant='contained'>
+        Select Next To Watch
       </Button>
     </div>
   </div>
