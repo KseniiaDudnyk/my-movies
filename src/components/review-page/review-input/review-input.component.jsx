@@ -34,7 +34,7 @@ const ReviewInput = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
 
   return (
     <div>
-      <form noValidate autoComplete='off'>
+      <form className='review-form' noValidate autoComplete='off'>
         <TextField
           className='title'
           id='outlined-basic1'
@@ -63,15 +63,11 @@ const ReviewInput = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
           onChange={handlePosterLinkInput}
         />
 
-        <Button
-          className='poster-upload-btn'
-          variant='contained'
-          onClick={handleUploadPoster}
-        >
+        <Button variant='contained' onClick={handleUploadPoster}>
           Upload
         </Button>
 
-        <div className='upload-img'>
+        {/* <div className='upload-img'>
           <input
             disabled
             accept='image/*'
@@ -84,7 +80,7 @@ const ReviewInput = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
               Upload
             </Button>
           </label>
-        </div>
+        </div> */}
       </form>
     </div>
   );

@@ -1,9 +1,22 @@
+@import '../../../shared.styles.scss';
+
 .rate-container {
-  width: 100%;
+  width: $input-field-width;
+  margin: $base-margin auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 
   .radio-group {
     flex-direction: row;
+  }
+
+  .favorite-icon {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+
+    legend {
+      margin: 10% auto;
+    }
   }
 }

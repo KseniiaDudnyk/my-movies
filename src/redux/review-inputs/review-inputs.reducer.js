@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   movieTitle: '',
   movieReview: '',
   moviePosterLink: '',
+  isFavorite: false,
 };
 
 const reviewReducer = (state = INITIAL_STATE, action) => {
@@ -43,6 +44,12 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
     case ReviewActionTypes.RESET_REDUCER_DATA:
       return {
         state: INITIAL_STATE,
+      };
+
+    case ReviewActionTypes.TOGGLE_FAVORITE:
+      return {
+        ...state,
+        isFavorite: !state.isFavorite,
       };
 
     default:

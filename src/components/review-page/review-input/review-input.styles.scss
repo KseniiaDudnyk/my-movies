@@ -1,31 +1,29 @@
-form {
+@import '../../../shared.styles.scss';
+
+.review-form {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 2%;
 
   .title,
   .review {
-    width: 60%;
-    margin-bottom: 20px;
+    width: $input-field-width;
+    margin-bottom: $base-margin;
   }
 
   .poster {
-    width: 50%;
-    margin-right: 45px;
-
-    .poster-upload-btn {
-      width: 10%;
-    }
+    width: $input-field-width - 10%;
+    margin-right: $base-margin;
   }
 }
 
-.upload-img {
-  width: 60%;
-  margin-top: 20px;
+// .upload-img {
+//   width: 60%;
+//   margin-top: 20px;
 
-  input {
-    display: none;
-  }
-}
+//   input {
+//     display: none;
+//   }
+// }

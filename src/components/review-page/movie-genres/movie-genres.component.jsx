@@ -42,7 +42,7 @@ const MovieGenres = ({ addMovieGenre }) => {
 
   const obj = generate();
 
-  const [state, setState] = React.useState({ ...obj });
+  const [state] = React.useState({ ...obj });
 
   const selectedGenres = [];
 
@@ -63,9 +63,6 @@ const MovieGenres = ({ addMovieGenre }) => {
     }
 
     addMovieGenre(selectedGenres);
-
-    // If to do setState() array will be empty each handleChange call
-    // setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (

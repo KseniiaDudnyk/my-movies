@@ -15,6 +15,7 @@ import {
   selectMovieTitle,
   selectMovieReview,
   selectMoviePosterLink,
+  selectIsMovieFavorite,
 } from '../../../redux/review-inputs/review-inputs.selectors';
 import { resetReviewInputReducerData } from '../../../redux/review-inputs/review-inputs.actions';
 import { addMovieReviewData } from '../../../redux/reviews-data/reviews-data.actions';
@@ -28,6 +29,7 @@ const SubmitButton = ({
   moviePosterLink,
   addMovieReviewData,
   resetReviewInputReducerData,
+  isMovieFavorite,
 }) => {
   const [open, setOpen] = React.useState(false);
 
@@ -43,6 +45,7 @@ const SubmitButton = ({
     let currentMovieGenres = genresArr.flat();
     let currentMovieRate = movieRate;
     let currentMoviePosterLink = moviePosterLink;
+    let currentIsMovieFavorite = isMovieFavorite;
 
     if (
       !currentMovieTitle ||
@@ -58,6 +61,7 @@ const SubmitButton = ({
         rate: currentMovieRate,
         posterUrl: currentMoviePosterLink,
         isReviewTextHidden: true,
+        isFavorite: currentIsMovieFavorite,
       });
       resetReviewInputReducerData();
       history.push('/watched');
@@ -85,6 +89,7 @@ const mapStateToProps = createStructuredSelector({
   movieTitle: selectMovieTitle,
   movieReview: selectMovieReview,
   moviePosterLink: selectMoviePosterLink,
+  isMovieFavorite: selectIsMovieFavorite,
 });
 
 export default withRouter(

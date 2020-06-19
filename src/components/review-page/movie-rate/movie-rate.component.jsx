@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import './movie-rate.styles.scss';
 
@@ -12,8 +13,10 @@ import {
 } from '@material-ui/core';
 
 import { addMovieRate } from '../../../redux/review-inputs/review-inputs.actions';
+import FavoriteSelection from '../../favorite-selection/favorite-selection.component';
+import { selectIsMovieFavorite } from '../../../redux/review-inputs/review-inputs.selectors';
 
-const MovieRate = ({ addMovieRate }) => {
+const MovieRate = ({ addMovieRate, isMovieFavorite }) => {
   const rateArr = Array(10)
     .fill(1)
     .map((i, idx) => (idx + i).toString());
@@ -46,6 +49,10 @@ const MovieRate = ({ addMovieRate }) => {
           ))}
         </RadioGroup>
       </FormControl>
+      <div className='favorite-icon'>
+        <FormLabel component='legend'>Add to Favorite</FormLabel>
+        <FavoriteSelection isFavorite={isMovieFavorite} />
+      </div>
     </div>
   );
 };
@@ -54,4 +61,8 @@ const mapDispatchToProps = (dispatch) => ({
   addMovieRate: (rate) => dispatch(addMovieRate(rate)),
 });
 
-export default connect(null, mapDispatchToProps)(MovieRate);
+const mapStateToProps = createStructuredSelector({
+  isMovieFavorite: selectIsMovieFavorite,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieRate);

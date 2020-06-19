@@ -2,6 +2,8 @@ import React from 'react';
 
 import './watched-movies-card.styles.scss';
 
+import movieDefault from '../../assets/images/movie-default.jpg';
+
 import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import FavoriteSelection from '../favorite-selection/favorite-selection.component';
@@ -12,7 +14,7 @@ const WatchedMoviesCard = ({ review }) => {
     <Card className='movie-card'>
       <CardMedia
         style={{ height: 350 + 'px', width: 100 + '%' }}
-        image={review.posterUrl}
+        image={!review.posterUrl ? movieDefault : review.posterUrl}
         title={review.title}
       />
       <CardContent className='movie-review-container'>
@@ -25,7 +27,10 @@ const WatchedMoviesCard = ({ review }) => {
             {review.rate}
           </Typography>
           <StarIcon className='star-icon' />
-          <FavoriteSelection />
+          <FavoriteSelection
+            title={review.title}
+            isFavorite={review.isFavorite}
+          />
         </div>
 
         <Unfold isHidden={review.isReviewTextHidden} movie={review} />

@@ -26,3 +26,8 @@ export const selectMoviePosterLink = createSelector(
   [selectReview],
   (reviewInput) => reviewInput.moviePosterLink
 );
+
+export const selectIsMovieFavorite = createSelector(
+  [selectReview],
+  (reviewInput) => reviewInput.isFavorite
+);

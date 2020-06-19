@@ -1,4 +1,6 @@
+@import '../../../shared.styles.scss';
+
 .checkboxes-container {
-  width: 60%;
-  margin: 20px auto;
+  width: $input-field-width;
+  margin: $base-margin auto;
 }

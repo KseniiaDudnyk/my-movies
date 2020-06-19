@@ -1,4 +1,5 @@
 import { ReviewsDataActionTypes } from './reviews-data.types';
+import { ReviewActionTypes } from '../review-inputs/review-inputs.types';
 
 const INITIAL_STATE = {
   reviews: [
@@ -11,6 +12,7 @@ const INITIAL_STATE = {
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
       isReviewTextHidden: true,
+      isFavorite: true,
     },
     {
       title: 'Fight Club',
@@ -21,6 +23,7 @@ const INITIAL_STATE = {
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/ru/thumb/8/8a/Fight_club.jpg/239px-Fight_club.jpg',
       isReviewTextHidden: true,
+      isFavorite: false,
     },
     {
       title: 'The Matrix',
@@ -31,6 +34,7 @@ const INITIAL_STATE = {
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/ru/thumb/9/9d/Matrix-DVD.jpg/217px-Matrix-DVD.jpg',
       isReviewTextHidden: true,
+      isFavorite: false,
     },
     {
       title: 'Inception',
@@ -41,6 +45,7 @@ const INITIAL_STATE = {
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg',
       isReviewTextHidden: true,
+      isFavorite: false,
     },
     {
       title: 'Jojo Rabbit',
@@ -51,6 +56,7 @@ const INITIAL_STATE = {
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/en/a/a2/Jojo_Rabbit_%282019%29_poster.jpg',
       isReviewTextHidden: true,
+      isFavorite: false,
     },
   ],
 };
@@ -71,6 +77,23 @@ const reviewsDataReducer = (state = INITIAL_STATE, action) => {
             return {
               ...el,
               isReviewTextHidden: !el.isReviewTextHidden,
+            };
+          } else {
+            return {
+              ...el,
+            };
+          }
+        }),
+      };
+
+    case ReviewActionTypes.TOGGLE_FAVORITE:
+      return {
+        ...state,
+        reviews: state.reviews.map((el) => {
+          if (el.title === action.payload) {
+            return {
+              ...el,
+              isFavorite: !el.isFavorite,
             };
           } else {
             return {
