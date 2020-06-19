@@ -25,17 +25,24 @@ class NavBar extends React.Component {
           <Link to='/'>
             <HomeIcon />
           </Link>
+
           <div className='buttons'>
             <Link to='/watched'>
               <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
             </Link>
+
             <Link to='/next-to-watch'>
               <Button endIcon={<PlaylistPlayIcon />}>Next To Watch</Button>
             </Link>
-            <Button endIcon={<FavoriteIcon />}>Favorite</Button>
+
+            <Link to='/favorite'>
+              <Button endIcon={<FavoriteIcon />}>Favorite</Button>
+            </Link>
+
             <Link to='/review'>
               <Button endIcon={<BorderColorIcon />}>Add Review</Button>
             </Link>
+
             <Link to='/add-to-watch'>
               <Button endIcon={<UpdateIcon />}>Add To Future</Button>
             </Link>

@@ -9,7 +9,7 @@ import StarIcon from '@material-ui/icons/Star';
 import FavoriteSelection from '../favorite-selection/favorite-selection.component';
 import Unfold from '../unfold/unfold.component';
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, type }) => {
   return (
     <Card className='movie-card'>
       <CardMedia
@@ -22,17 +22,19 @@ const MovieCard = ({ movie }) => {
           {movie.title}
         </Typography>
 
-        <div className='movie-rate'>
-          <Typography className='rate-number' variant='h6'>
-            {movie.rate}
-          </Typography>
-          <StarIcon className='star-icon' />
+        {type === 'watched' ? (
+          <div className='movie-rate'>
+            <Typography className='rate-number' variant='h6'>
+              {movie.rate}
+            </Typography>
+            <StarIcon className='star-icon' />
 
-          <FavoriteSelection
-            title={movie.title}
-            isFavorite={movie.isFavorite}
-          />
-        </div>
+            <FavoriteSelection
+              title={movie.title}
+              isFavorite={movie.isFavorite}
+            />
+          </div>
+        ) : null}
 
         <Unfold isHidden={movie.isReviewTextHidden} movie={movie} />
       </CardContent>
