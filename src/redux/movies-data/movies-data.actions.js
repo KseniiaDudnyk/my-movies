@@ -9,3 +9,8 @@ export const toggleReviewTextHidden = (title) => ({
   type: MoviesDataActionTypes.TOGGLE_REVIEW_TEXT_HIDDEN,
   payload: title,
 });
+
+export const selectWatched = (title) => ({
+  type: MoviesDataActionTypes.SELECT_WATCHED,
+  payload: title,
+});

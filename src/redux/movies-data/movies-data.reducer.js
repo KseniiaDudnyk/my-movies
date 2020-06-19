@@ -132,6 +132,23 @@ const moviesDataReducer = (state = INITIAL_STATE, action) => {
         }),
       };
 
+    case MoviesDataActionTypes.SELECT_WATCHED:
+      return {
+        ...state,
+        movies: state.movies.map((el) => {
+          if (el.title === action.payload) {
+            return {
+              ...el,
+              isWatched: true,
+            };
+          } else {
+            return {
+              ...el,
+            };
+          }
+        }),
+      };
+
     default:
       return state;
   }
