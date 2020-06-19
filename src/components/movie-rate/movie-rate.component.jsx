@@ -12,9 +12,9 @@ import {
   FormLabel,
 } from '@material-ui/core';
 
-import { addMovieRate } from '../../../redux/review-inputs/review-inputs.actions';
-import FavoriteSelection from '../../favorite-selection/favorite-selection.component';
-import { selectIsMovieFavorite } from '../../../redux/review-inputs/review-inputs.selectors';
+import { addMovieRate } from '../../redux/review-inputs/review-inputs.actions';
+import FavoriteSelection from '../favorite-selection/favorite-selection.component';
+import { selectIsMovieFavorite } from '../../redux/review-inputs/review-inputs.selectors';
 
 const MovieRate = ({ addMovieRate, isMovieFavorite }) => {
   const rateArr = Array(10)

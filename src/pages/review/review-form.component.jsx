@@ -2,14 +2,14 @@ import React from 'react';
 
 import './review-form.styles.scss';
 
-import ReviewInput from '../../components/review-page/review-input/review-input.component';
-import MovieGenres from '../../components/review-page/movie-genres/movie-genres.component';
-import MovieRate from '../../components/review-page/movie-rate/movie-rate.component';
-import SubmitButton from '../../components/review-page/submit-button/submit-button.component';
+import MovieInputs from '../../components/movie-inputs/movie-inputs.component';
+import MovieGenres from '../../components/movie-genres/movie-genres.component';
+import MovieRate from '../../components/movie-rate/movie-rate.component';
+import SubmitButton from '../../components/submit-button/submit-button.component';
 
 const ReviewForm = () => (
   <div>
-    <ReviewInput />
+    <MovieInputs />
     <MovieGenres />
     <MovieRate />
     <SubmitButton />

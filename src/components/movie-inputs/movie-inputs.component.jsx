@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './review-input.styles.scss';
+import './movie-inputs.styles.scss';
 
 import { TextField, Button } from '@material-ui/core';
 import {
   addMovieTitle,
   addMovieReview,
   addMoviePosterLink,
-} from '../../../redux/review-inputs/review-inputs.actions';
+} from '../../redux/review-inputs/review-inputs.actions';
 
-const ReviewInput = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
+const MovieInputs = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
   // fileUploadHandler = (event) => {
   //     selectedFile: event.target.files[0],
   // };
@@ -92,4 +92,4 @@ const mapDispatchToProps = (dispatch) => ({
   addMoviePosterLink: (link) => dispatch(addMoviePosterLink(link)),
 });
 
-export default connect(null, mapDispatchToProps)(ReviewInput);
+export default connect(null, mapDispatchToProps)(MovieInputs);

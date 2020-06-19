@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './watched-movies-card.styles.scss';
+import './movie-card.styles.scss';
 
 import movieDefault from '../../assets/images/movie-default.jpg';
 
@@ -9,34 +9,34 @@ import StarIcon from '@material-ui/icons/Star';
 import FavoriteSelection from '../favorite-selection/favorite-selection.component';
 import Unfold from '../unfold/unfold.component';
 
-const WatchedMoviesCard = ({ review }) => {
+const MovieCard = ({ movie }) => {
   return (
     <Card className='movie-card'>
       <CardMedia
         style={{ height: 350 + 'px', width: 100 + '%' }}
-        image={!review.posterUrl ? movieDefault : review.posterUrl}
-        title={review.title}
+        image={!movie.posterUrl ? movieDefault : movie.posterUrl}
+        title={movie.title}
       />
       <CardContent className='movie-review-container'>
         <Typography gutterBottom variant='h5' component='h2'>
-          {review.title}
+          {movie.title}
         </Typography>
 
         <div className='movie-rate'>
           <Typography className='rate-number' variant='h6'>
-            {review.rate}
+            {movie.rate}
           </Typography>
           <StarIcon className='star-icon' />
           <FavoriteSelection
-            title={review.title}
-            isFavorite={review.isFavorite}
+            title={movie.title}
+            isFavorite={movie.isFavorite}
           />
         </div>
 
-        <Unfold isHidden={review.isReviewTextHidden} movie={review} />
+        <Unfold isHidden={movie.isReviewTextHidden} movie={movie} />
       </CardContent>
     </Card>
   );
 };
 
-export default WatchedMoviesCard;
+export default MovieCard;

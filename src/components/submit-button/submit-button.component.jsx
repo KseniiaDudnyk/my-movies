@@ -7,7 +7,7 @@ import './submit-button.styles.scss';
 
 import { Button } from '@material-ui/core';
 
-import SimpleDialog from '../../simple-dialog/simple-dialog.component';
+import SimpleDialog from '../simple-dialog/simple-dialog.component';
 
 import {
   selectMovieRate,
@@ -16,9 +16,9 @@ import {
   selectMovieReview,
   selectMoviePosterLink,
   selectIsMovieFavorite,
-} from '../../../redux/review-inputs/review-inputs.selectors';
-import { resetReviewInputReducerData } from '../../../redux/review-inputs/review-inputs.actions';
-import { addMovieReviewData } from '../../../redux/reviews-data/reviews-data.actions';
+} from '../../redux/review-inputs/review-inputs.selectors';
+import { resetReviewInputReducerData } from '../../redux/review-inputs/review-inputs.actions';
+import { addMovieReviewData } from '../../redux/reviews-data/reviews-data.actions';
 
 const SubmitButton = ({
   history,

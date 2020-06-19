@@ -10,7 +10,7 @@ import {
   Checkbox,
 } from '@material-ui/core';
 
-import { addMovieGenre } from '../../../redux/review-inputs/review-inputs.actions';
+import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
 
 const MovieGenres = ({ addMovieGenre }) => {
   const genres = [
