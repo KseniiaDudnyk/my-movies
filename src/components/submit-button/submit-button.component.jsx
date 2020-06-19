@@ -18,7 +18,7 @@ import {
   selectIsMovieFavorite,
 } from '../../redux/review-inputs/review-inputs.selectors';
 import { resetReviewInputReducerData } from '../../redux/review-inputs/review-inputs.actions';
-import { addMovieReviewData } from '../../redux/reviews-data/reviews-data.actions';
+import { addMovieReview } from '../../redux/movies-data/movies-data.actions';
 
 const SubmitButton = ({
   history,
@@ -27,9 +27,10 @@ const SubmitButton = ({
   movieTitle,
   movieReview,
   moviePosterLink,
-  addMovieReviewData,
+  addMovieReview,
   resetReviewInputReducerData,
   isMovieFavorite,
+  type,
 }) => {
   const [open, setOpen] = React.useState(false);
 
@@ -37,7 +38,15 @@ const SubmitButton = ({
     setOpen(false);
   };
 
-  const submitReview = () => {
+  const redirect = () => {
+    if (type === '/review') {
+      history.push('/watched');
+    } else if (type === '/add-to-watch') {
+      history.push('/next-to-watch');
+    }
+  };
+
+  const submitMovie = () => {
     let genresArr = movieGenres.map((genre) => Object.keys(genre));
 
     let currentMovieTitle = movieTitle;
@@ -46,6 +55,13 @@ const SubmitButton = ({
     let currentMovieRate = movieRate;
     let currentMoviePosterLink = moviePosterLink;
     let currentIsMovieFavorite = isMovieFavorite;
+    let currentIsWatched;
+
+    if (type === '/review') {
+      currentIsWatched = true;
+    } else if (type === '/add-to-watch') {
+      currentIsWatched = false;
+    }
 
     if (
       !currentMovieTitle ||
@@ -54,7 +70,7 @@ const SubmitButton = ({
     ) {
       setOpen(true);
     } else {
-      addMovieReviewData({
+      addMovieReview({
         title: currentMovieTitle,
         review: currentMovieReview,
         genres: currentMovieGenres,
@@ -62,16 +78,17 @@ const SubmitButton = ({
         posterUrl: currentMoviePosterLink,
         isReviewTextHidden: true,
         isFavorite: currentIsMovieFavorite,
+        isWatched: currentIsWatched,
       });
       resetReviewInputReducerData();
-      history.push('/watched');
+      redirect();
     }
   };
 
   return (
     <div className='submit-btn'>
-      <Button variant='contained' component='span' onClick={submitReview}>
-        Save Review
+      <Button variant='contained' component='span' onClick={submitMovie}>
+        Save Movie
       </Button>
       <SimpleDialog open={open} onClose={handleClose} />
     </div>
@@ -79,7 +96,7 @@ const SubmitButton = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addMovieReviewData: (review) => dispatch(addMovieReviewData(review)),
+  addMovieReview: (review) => dispatch(addMovieReview(review)),
   resetReviewInputReducerData: () => dispatch(resetReviewInputReducerData()),
 });
 

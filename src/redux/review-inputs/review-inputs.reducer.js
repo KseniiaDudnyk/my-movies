@@ -29,7 +29,7 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
         movieTitle: action.payload,
       };
 
-    case ReviewActionTypes.ADD_MOVIE_REVIEW:
+    case ReviewActionTypes.ADD_MOVIE_REVIEW_TEXT:
       return {
         ...state,
         movieReview: action.payload,

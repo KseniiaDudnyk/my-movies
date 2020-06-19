@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './unfold.styles.scss';
 
 import { Typography } from '@material-ui/core';
-import { toggleReviewTextHidden } from '../../redux/reviews-data/reviews-data.actions';
+import { toggleReviewTextHidden } from '../../redux/movies-data/movies-data.actions';
 
 const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
   <div className='review-text'>

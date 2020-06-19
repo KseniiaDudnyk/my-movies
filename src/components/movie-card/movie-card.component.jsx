@@ -27,6 +27,7 @@ const MovieCard = ({ movie }) => {
             {movie.rate}
           </Typography>
           <StarIcon className='star-icon' />
+
           <FavoriteSelection
             title={movie.title}
             isFavorite={movie.isFavorite}

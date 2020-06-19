@@ -1,8 +1,8 @@
-import { ReviewsDataActionTypes } from './reviews-data.types';
+import { MoviesDataActionTypes } from './movies-data.types';
 import { ReviewActionTypes } from '../review-inputs/review-inputs.types';
 
 const INITIAL_STATE = {
-  reviews: [
+  movies: [
     {
       title: 'Pulp Fiction',
       review:
@@ -13,6 +13,7 @@ const INITIAL_STATE = {
         'https://upload.wikimedia.org/wikipedia/ru/thumb/9/93/Pulp_Fiction.jpg/211px-Pulp_Fiction.jpg',
       isReviewTextHidden: true,
       isFavorite: true,
+      isWatched: true,
     },
     {
       title: 'Fight Club',
@@ -24,6 +25,7 @@ const INITIAL_STATE = {
         'https://upload.wikimedia.org/wikipedia/ru/thumb/8/8a/Fight_club.jpg/239px-Fight_club.jpg',
       isReviewTextHidden: true,
       isFavorite: false,
+      isWatched: true,
     },
     {
       title: 'The Matrix',
@@ -35,6 +37,7 @@ const INITIAL_STATE = {
         'https://upload.wikimedia.org/wikipedia/ru/thumb/9/9d/Matrix-DVD.jpg/217px-Matrix-DVD.jpg',
       isReviewTextHidden: true,
       isFavorite: false,
+      isWatched: true,
     },
     {
       title: 'Inception',
@@ -46,6 +49,7 @@ const INITIAL_STATE = {
         'https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg',
       isReviewTextHidden: true,
       isFavorite: false,
+      isWatched: true,
     },
     {
       title: 'Jojo Rabbit',
@@ -57,22 +61,47 @@ const INITIAL_STATE = {
         'https://upload.wikimedia.org/wikipedia/en/a/a2/Jojo_Rabbit_%282019%29_poster.jpg',
       isReviewTextHidden: true,
       isFavorite: false,
+      isWatched: true,
+    },
+    {
+      title: 'Ready or Not',
+      review:
+        'A bride`s wedding night takes a sinister turn when her eccentric new in-laws force her to take part in a terrifying game.',
+      genres: ['comedy', 'horror', 'thriller', 'mystery'],
+      rate: '9',
+      posterUrl:
+        'https://upload.wikimedia.org/wikipedia/ru/thumb/2/2b/Ready_or_Not_2019_film_Russian_poster.jpg/210px-Ready_or_Not_2019_film_Russian_poster.jpg',
+      isReviewTextHidden: true,
+      isFavorite: false,
+      isWatched: false,
+    },
+    {
+      title: 'Knives Out',
+      review:
+        'A detective investigates the death of a patriarch of an eccentric, combative family.',
+      genres: ['comedy', 'drama', 'drama', 'mystery', 'thriller'],
+      rate: '10',
+      posterUrl:
+        'https://upload.wikimedia.org/wikipedia/ru/thumb/8/83/Knives_Out_%28film%29.jpg/202px-Knives_Out_%28film%29.jpg',
+      isReviewTextHidden: true,
+      isFavorite: false,
+      isWatched: false,
     },
   ],
 };
 
-const reviewsDataReducer = (state = INITIAL_STATE, action) => {
+const moviesDataReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ReviewsDataActionTypes.ADD_MOVIE_REVIEW_DATA:
+    case MoviesDataActionTypes.ADD_MOVIE_REVIEW:
       return {
         ...state,
-        reviews: [...state.reviews, action.payload],
+        movies: [...state.movies, action.payload],
       };
 
-    case ReviewsDataActionTypes.TOGGLE_REVIEW_TEXT_HIDDEN:
+    case MoviesDataActionTypes.TOGGLE_REVIEW_TEXT_HIDDEN:
       return {
         ...state,
-        reviews: state.reviews.map((el, indx) => {
+        movies: state.movies.map((el, indx) => {
           if (el.title === action.payload) {
             return {
               ...el,
@@ -89,7 +118,7 @@ const reviewsDataReducer = (state = INITIAL_STATE, action) => {
     case ReviewActionTypes.TOGGLE_FAVORITE:
       return {
         ...state,
-        reviews: state.reviews.map((el) => {
+        movies: state.movies.map((el) => {
           if (el.title === action.payload) {
             return {
               ...el,
@@ -108,4 +137,4 @@ const reviewsDataReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default reviewsDataReducer;
+export default moviesDataReducer;

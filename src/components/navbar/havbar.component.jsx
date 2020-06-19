@@ -10,6 +10,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
+import UpdateIcon from '@material-ui/icons/Update';
 import HomeIcon from '@material-ui/icons/Home';
 import {
   selectUserName,
@@ -28,10 +29,15 @@ class NavBar extends React.Component {
             <Link to='/watched'>
               <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
             </Link>
-            <Button endIcon={<PlaylistPlayIcon />}>Next To Watch</Button>
+            <Link to='/next-to-watch'>
+              <Button endIcon={<PlaylistPlayIcon />}>Next To Watch</Button>
+            </Link>
             <Button endIcon={<FavoriteIcon />}>Favorite</Button>
             <Link to='/review'>
               <Button endIcon={<BorderColorIcon />}>Add Review</Button>
+            </Link>
+            <Link to='/add-to-watch'>
+              <Button endIcon={<UpdateIcon />}>Add To Future</Button>
             </Link>
           </div>
 

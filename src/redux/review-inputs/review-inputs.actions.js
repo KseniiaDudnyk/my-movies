@@ -15,9 +15,9 @@ export const addMovieTitle = (title) => ({
   payload: title,
 });
 
-export const addMovieReview = (review) => ({
-  type: ReviewActionTypes.ADD_MOVIE_REVIEW,
-  payload: review,
+export const addMovieReviewText = (reviewText) => ({
+  type: ReviewActionTypes.ADD_MOVIE_REVIEW_TEXT,
+  payload: reviewText,
 });
 
 export const addMoviePosterLink = (link) => ({

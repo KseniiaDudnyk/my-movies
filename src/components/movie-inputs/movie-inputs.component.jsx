@@ -6,11 +6,15 @@ import './movie-inputs.styles.scss';
 import { TextField, Button } from '@material-ui/core';
 import {
   addMovieTitle,
-  addMovieReview,
+  addMovieReviewText,
   addMoviePosterLink,
 } from '../../redux/review-inputs/review-inputs.actions';
 
-const MovieInputs = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
+const MovieInputs = ({
+  addMovieTitle,
+  addMovieReviewText,
+  addMoviePosterLink,
+}) => {
   // fileUploadHandler = (event) => {
   //     selectedFile: event.target.files[0],
   // };
@@ -21,7 +25,7 @@ const MovieInputs = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
   };
 
   const handleChangeReview = (event) => {
-    addMovieReview(event.target.value);
+    addMovieReviewText(event.target.value);
   };
 
   const handleUploadPoster = () => {
@@ -88,7 +92,7 @@ const MovieInputs = ({ addMovieTitle, addMovieReview, addMoviePosterLink }) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addMovieTitle: (title) => dispatch(addMovieTitle(title)),
-  addMovieReview: (review) => dispatch(addMovieReview(review)),
+  addMovieReviewText: (review) => dispatch(addMovieReviewText(review)),
   addMoviePosterLink: (link) => dispatch(addMoviePosterLink(link)),
 });
 
