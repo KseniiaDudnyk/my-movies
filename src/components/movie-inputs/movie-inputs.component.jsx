@@ -67,8 +67,12 @@ const MovieInputs = ({
           onChange={handlePosterLinkInput}
         />
 
-        <Button variant='contained' onClick={handleUploadPoster}>
-          Upload
+        <Button
+          color='secondary'
+          variant='contained'
+          onClick={handleUploadPoster}
+        >
+          Save Poster
         </Button>
 
         {/* <div className='upload-img'>

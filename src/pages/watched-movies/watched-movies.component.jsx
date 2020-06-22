@@ -21,6 +21,8 @@ const WatchedMovies = ({ reviews }) => (
               type='watched'
             />
           );
+        } else {
+          return null;
         }
       })}
     </div>

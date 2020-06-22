@@ -90,7 +90,11 @@ const SubmitButton = ({
       <Button variant='contained' component='span' onClick={submitMovie}>
         Save Movie
       </Button>
-      <SimpleDialog open={open} onClose={handleClose} />
+      <SimpleDialog
+        open={open}
+        onClose={handleClose}
+        message='Please fill review form'
+      />
     </div>
   );
 };

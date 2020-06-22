@@ -17,6 +17,10 @@
     width: $input-field-width - 10%;
     margin-right: $base-margin;
   }
+
+  Button:hover {
+    color: black;
+  }
 }
 
 // .upload-img {
