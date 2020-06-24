@@ -13,9 +13,15 @@ const NextToWatch = ({ movies }) => (
     <Header text='Movies Next To Watch' />
 
     <div className='card-container'>
-      {movies.map((movie, indx) => {
+      {movies.map((movie) => {
         if (!movie.isWatched) {
-          return <MovieCard key={movie.rate + 20 * indx} movie={movie} />;
+          return (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              isWatched={movie.isWatched}
+            />
+          );
         } else {
           return null;
         }

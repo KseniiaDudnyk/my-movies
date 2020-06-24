@@ -4,7 +4,7 @@ import './simple-snackbar.styles.scss';
 
 import Snackbar from '@material-ui/core/Snackbar';
 
-const SimpleSnackbar = ({ message, open }) => {
+const SimpleSnackbar = ({ message, open, handleClose }) => {
   const [state] = React.useState({
     open: false,
     vertical: 'top',
@@ -15,8 +15,10 @@ const SimpleSnackbar = ({ message, open }) => {
 
   return (
     <Snackbar
+      autoHideDuration={1500}
       anchorOrigin={{ vertical, horizontal }}
       open={open}
+      onClose={handleClose}
       message={message}
       key={vertical + horizontal}
     />

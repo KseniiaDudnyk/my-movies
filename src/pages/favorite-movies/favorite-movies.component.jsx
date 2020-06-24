@@ -13,9 +13,9 @@ const FavoriteMovies = ({ movies }) => (
     <Header text='List of Favorite Movies' />
 
     <div className='card-container'>
-      {movies.map((movie, indx) => {
+      {movies.map((movie) => {
         if (movie.isFavorite) {
-          return <MovieCard key={movie.rate + 20 * indx} movie={movie} />;
+          return <MovieCard key={movie.id} movie={movie} />;
         } else {
           return null;
         }

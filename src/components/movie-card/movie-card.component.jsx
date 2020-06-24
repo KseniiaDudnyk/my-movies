@@ -10,36 +10,42 @@ import FavoriteSelection from '../favorite-selection/favorite-selection.componen
 import Unfold from '../unfold/unfold.component';
 import WatchedSelection from '../watched-selection/watched-selection.component';
 
-const MovieCard = ({ movie, type }) => {
+const MovieCard = ({ movie }) => {
+  const {
+    posterUrl,
+    title,
+    isWatched,
+    rate,
+    isFavorite,
+    isReviewTextHidden,
+  } = movie;
+
   return (
     <Card className='movie-card'>
       <CardMedia
         style={{ height: 350 + 'px', width: 100 + '%' }}
-        image={!movie.posterUrl ? movieDefault : movie.posterUrl}
-        title={movie.title}
+        image={!posterUrl ? movieDefault : posterUrl}
+        title={title}
       />
       <CardContent className='movie-review-container'>
         <Typography gutterBottom variant='h5' component='h2'>
-          {movie.title}
+          {title}
         </Typography>
 
-        {type === 'watched' ? (
+        {isWatched ? (
           <div className='movie-rate'>
             <Typography className='rate-number' variant='h6'>
-              {movie.rate}
+              {rate}
             </Typography>
             <StarIcon className='star-icon' />
 
-            <FavoriteSelection
-              title={movie.title}
-              isFavorite={movie.isFavorite}
-            />
+            <FavoriteSelection title={title} isFavorite={isFavorite} />
           </div>
         ) : (
-          <WatchedSelection title={movie.title} isWatched={movie.isWatched} />
+          <WatchedSelection title={title} isWatched={isWatched} />
         )}
 
-        <Unfold isHidden={movie.isReviewTextHidden} movie={movie} />
+        <Unfold isHidden={isReviewTextHidden} movie={movie} />
       </CardContent>
     </Card>
   );

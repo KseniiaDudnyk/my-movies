@@ -4,6 +4,7 @@ import { ReviewActionTypes } from '../review-inputs/review-inputs.types';
 const INITIAL_STATE = {
   movies: [
     {
+      id: '01',
       title: 'Pulp Fiction',
       review:
         'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.',
@@ -16,6 +17,7 @@ const INITIAL_STATE = {
       isWatched: true,
     },
     {
+      id: '02',
       title: 'Fight Club',
       review:
         'An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.',
@@ -28,6 +30,7 @@ const INITIAL_STATE = {
       isWatched: true,
     },
     {
+      id: '03',
       title: 'The Matrix',
       review:
         'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.',
@@ -40,6 +43,7 @@ const INITIAL_STATE = {
       isWatched: true,
     },
     {
+      id: '04',
       title: 'Inception',
       review:
         'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
@@ -52,6 +56,7 @@ const INITIAL_STATE = {
       isWatched: true,
     },
     {
+      id: '05',
       title: 'Jojo Rabbit',
       review:
         'A young boy in Hitler`s army finds out his mother is hiding a Jewish girl in their home.',
@@ -64,6 +69,7 @@ const INITIAL_STATE = {
       isWatched: true,
     },
     {
+      id: '06',
       title: 'Ready or Not',
       review:
         'A bride`s wedding night takes a sinister turn when her eccentric new in-laws force her to take part in a terrifying game.',
@@ -76,6 +82,7 @@ const INITIAL_STATE = {
       isWatched: false,
     },
     {
+      id: '07',
       title: 'Knives Out',
       review:
         'A detective investigates the death of a patriarch of an eccentric, combative family.',
@@ -101,7 +108,7 @@ const moviesDataReducer = (state = INITIAL_STATE, action) => {
     case MoviesDataActionTypes.TOGGLE_REVIEW_TEXT_HIDDEN:
       return {
         ...state,
-        movies: state.movies.map((el, indx) => {
+        movies: state.movies.map((el) => {
           if (el.title === action.payload) {
             return {
               ...el,

@@ -9,35 +9,26 @@ import { toggleFavorite } from '../../redux/review-inputs/review-inputs.actions'
 import SimpleSnackbar from '../simple-snackbar/simple-snackbar.component';
 
 const FavoriteSelection = ({ toggleFavorite, title, isFavorite }) => {
-  let message;
-
-  if (isFavorite) {
-    message = `${title} was added to favorite`;
-  } else {
-    message = `${title} was deleted from favorite`;
-  }
+  let message = 'Success';
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClick = () => () => {
+  const handleClick = () => {
     setOpen(true);
-    toggleFavorite(title);
 
-    setTimeout(() => {
-      setOpen(false);
-    }, 1500);
+    toggleFavorite(title);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <div className='selection-container'>
-      <IconButton
-        onClick={handleClick({ vertical: 'top', horizontal: 'center' })}
-        id='favorite-icon'
-        aria-label='add to favorites'
-      >
+      <IconButton onClick={handleClick} id='favorite-icon'>
         <FavoriteIcon color={isFavorite ? 'primary' : 'inherit'} />
       </IconButton>
-      <SimpleSnackbar open={open} message={message} />
+      <SimpleSnackbar open={open} message={message} handleClose={handleClose} />
     </div>
   );
 };

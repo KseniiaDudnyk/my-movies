@@ -32,6 +32,8 @@ const SubmitButton = ({
   isMovieFavorite,
   type,
 }) => {
+  let id;
+
   const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
@@ -46,6 +48,10 @@ const SubmitButton = ({
     }
   };
 
+  const createId = () => {
+    return (id = `0000${movieTitle}`);
+  };
+
   const submitMovie = () => {
     let genresArr = movieGenres.map((genre) => Object.keys(genre));
 
@@ -56,6 +62,7 @@ const SubmitButton = ({
     let currentMoviePosterLink = moviePosterLink;
     let currentIsMovieFavorite = isMovieFavorite;
     let currentIsWatched;
+    createId();
 
     if (type === '/review') {
       currentIsWatched = true;
@@ -71,6 +78,7 @@ const SubmitButton = ({
       setOpen(true);
     } else {
       addMovieReview({
+        id: id,
         title: currentMovieTitle,
         review: currentMovieReview,
         genres: currentMovieGenres,

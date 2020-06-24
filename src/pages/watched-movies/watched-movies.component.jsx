@@ -12,13 +12,13 @@ const WatchedMovies = ({ reviews }) => (
   <div>
     <Header text='Watched Movies List' />
     <div className='card-container'>
-      {reviews.map((review, indx) => {
+      {reviews.map((review) => {
         if (review.isWatched) {
           return (
             <MovieCard
-              key={review.rate + 20 * indx}
+              key={review.id}
               movie={review}
-              type='watched'
+              isWatched={review.isWatched}
             />
           );
         } else {

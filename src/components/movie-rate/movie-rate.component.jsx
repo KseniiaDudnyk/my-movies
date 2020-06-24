@@ -51,7 +51,7 @@ const MovieRate = ({ addMovieRate, isMovieFavorite }) => {
       </FormControl>
       <div className='favorite-icon'>
         <FormLabel component='legend'>Add to Favorite</FormLabel>
-        <FavoriteSelection isFavorite={isMovieFavorite} />
+        <FavoriteSelection isFavorite={isMovieFavorite} title='New film' />
       </div>
     </div>
   );
