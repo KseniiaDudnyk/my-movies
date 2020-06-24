@@ -20,7 +20,7 @@ import {
 class NavBar extends React.Component {
   render() {
     return (
-      <AppBar position='static' color='transparent'>
+      <AppBar position='sticky' color='default'>
         <Toolbar className='nav-bar'>
           <Link to='/'>
             <HomeIcon />
