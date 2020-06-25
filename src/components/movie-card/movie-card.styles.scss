@@ -1,3 +1,5 @@
+@import '../../shared.styles.scss';
+
 .movie-card {
   margin: 20px;
   width: calc(100% / 6);
@@ -27,6 +29,14 @@
       .star-icon {
         width: 20%;
         padding: 3px;
+      }
+    }
+
+    .genres-container {
+      margin-top: $base-margin;
+
+      .MuiChip-root {
+        margin: 5px;
       }
     }
   }

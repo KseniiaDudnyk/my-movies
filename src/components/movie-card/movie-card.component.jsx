@@ -4,7 +4,13 @@ import './movie-card.styles.scss';
 
 import movieDefault from '../../assets/images/movie-default.jpg';
 
-import { Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Chip,
+} from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import FavoriteSelection from '../favorite-selection/favorite-selection.component';
 import Unfold from '../unfold/unfold.component';
@@ -18,6 +24,7 @@ const MovieCard = ({ movie }) => {
     rate,
     isFavorite,
     isReviewTextHidden,
+    genres,
     id,
   } = movie;
 
@@ -51,6 +58,14 @@ const MovieCard = ({ movie }) => {
         )}
 
         <Unfold isHidden={isReviewTextHidden} movie={movie} />
+
+        <div className='genres-container'>
+          {genres.map((genre) => {
+            return (
+              <Chip variant='outlined' key={`${id}${genre}`} label={genre} />
+            );
+          })}
+        </div>
       </CardContent>
     </Card>
   );
