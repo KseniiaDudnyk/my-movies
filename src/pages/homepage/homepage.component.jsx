@@ -20,9 +20,11 @@ const HomePage = () => (
         </Button>
       </Link>
 
-      <Button endIcon={<PlaylistPlayIcon />} variant='contained'>
-        Select Next To Watch
-      </Button>
+      <Link to='/next-to-watch'>
+        <Button endIcon={<PlaylistPlayIcon />} variant='contained'>
+          Select Next To Watch
+        </Button>
+      </Link>
     </div>
   </div>
 );

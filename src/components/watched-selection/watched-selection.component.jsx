@@ -4,19 +4,21 @@ import { connect } from 'react-redux';
 import './watched-selection.styles.scss';
 
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import { selectWatched } from '../../redux/movies-data/movies-data.actions';
 
 const WatchedSelection = ({ selectWatched, isWatched, movieId }) => {
   return (
     <div className='selection-container'>
-      <IconButton
-        onClick={() => selectWatched(movieId)}
-        id='select-icon'
-        aria-label='select watched'
-      >
-        {!isWatched ? <DoneOutlineIcon /> : null}
-      </IconButton>
+      <Tooltip id='tooltip' title='watched'>
+        <IconButton
+          onClick={() => selectWatched(movieId)}
+          id='select-icon'
+          aria-label='select watched'
+        >
+          {!isWatched ? <DoneOutlineIcon /> : null}
+        </IconButton>
+      </Tooltip>
     </div>
   );
 };
