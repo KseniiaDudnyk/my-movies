@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
-import NavBar from './components/navbar/havbar.component';
+import NavBar from './pages/navbar/havbar.component';
 import ReviewForm from './pages/review/review-form.component';
 import WatchedMovies from './pages/watched-movies/watched-movies.component';
 import NextToWatch from './pages/next-to-watch/next-to-watch.component';

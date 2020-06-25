@@ -16,16 +16,20 @@ import {
   selectUserName,
   selectUserImage,
 } from '../../redux/user/user.selectors';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import ResponsiveNavBar from './responsive-navbar.component';
 
-class NavBar extends React.Component {
-  render() {
-    return (
-      <AppBar position='sticky' color='default'>
-        <Toolbar className='nav-bar'>
-          <Link to='/'>
-            <HomeIcon />
-          </Link>
+const NavBar = ({ name, image }) => {
+  const matches = useMediaQuery('(min-width:940px)');
 
+  return (
+    <AppBar position='sticky' color='default'>
+      <Toolbar className='nav-bar'>
+        <Link to='/'>
+          <HomeIcon color='action' />
+        </Link>
+
+        {matches ? (
           <div className='buttons'>
             <Link to='/watched'>
               <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>
@@ -47,18 +51,20 @@ class NavBar extends React.Component {
               <Button endIcon={<UpdateIcon />}>Add To Future</Button>
             </Link>
           </div>
+        ) : (
+          <ResponsiveNavBar />
+        )}
 
-          <div className='user-data'>
-            <Typography className='name' variant='h6'>
-              {this.props.name}
-            </Typography>
-            <Avatar alt={this.props.name} src={this.props.image} />
-          </div>
-        </Toolbar>
-      </AppBar>
-    );
-  }
-}
+        <div className='user-data'>
+          <Typography className='name' variant='h6'>
+            {name}
+          </Typography>
+          <Avatar alt={name} src={image} />
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   name: selectUserName,
