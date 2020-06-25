@@ -20,7 +20,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ResponsiveNavBar from './responsive-navbar.component';
 
 const NavBar = ({ name, image }) => {
-  const matches = useMediaQuery('(min-width:940px)');
+  const isMatches = useMediaQuery('(min-width:940px)');
 
   return (
     <AppBar position='sticky' color='default'>
@@ -29,7 +29,7 @@ const NavBar = ({ name, image }) => {
           <HomeIcon color='action' />
         </Link>
 
-        {matches ? (
+        {isMatches ? (
           <div className='buttons'>
             <Link to='/watched'>
               <Button endIcon={<PlaylistAddCheckIcon />}>Watched</Button>

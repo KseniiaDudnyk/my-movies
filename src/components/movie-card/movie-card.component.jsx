@@ -15,6 +15,7 @@ import StarIcon from '@material-ui/icons/Star';
 import FavoriteSelection from '../favorite-selection/favorite-selection.component';
 import Unfold from '../unfold/unfold.component';
 import WatchedSelection from '../watched-selection/watched-selection.component';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const MovieCard = ({ movie }) => {
   const {
@@ -28,20 +29,27 @@ const MovieCard = ({ movie }) => {
     id,
   } = movie;
 
+  const isMatches = useMediaQuery('(min-width:940px)');
+
   return (
     <Card className='movie-card'>
       <CardMedia
-        style={{ height: 350 + 'px', width: 100 + '%' }}
+        className={isMatches ? 'poster' : 'responsive-poster'}
         image={!posterUrl ? movieDefault : posterUrl}
         title={title}
       />
       <CardContent className='movie-review-container'>
-        <Typography gutterBottom variant='h5' component='h2'>
+        <Typography
+          className={isMatches ? 'title' : 'responsive-title'}
+          gutterBottom
+          variant='h5'
+          component='h2'
+        >
           {title}
         </Typography>
 
         {isWatched ? (
-          <div className='movie-rate'>
+          <div className={isMatches ? 'movie-rate' : 'responsive-movie-rate'}>
             <Typography className='rate-number' variant='h6'>
               {rate}
             </Typography>
@@ -63,15 +71,21 @@ const MovieCard = ({ movie }) => {
           </div>
         )}
 
-        <Unfold isHidden={isReviewTextHidden} movie={movie} />
+        <Unfold
+          className='unfold'
+          isHidden={isReviewTextHidden}
+          movie={movie}
+        />
 
-        <div className='genres-container'>
-          {genres.map((genre) => {
-            return (
-              <Chip variant='outlined' key={`${id}${genre}`} label={genre} />
-            );
-          })}
-        </div>
+        {isMatches ? (
+          <div className='genres-container'>
+            {genres.map((genre) => {
+              return (
+                <Chip variant='outlined' key={`${id}${genre}`} label={genre} />
+              );
+            })}
+          </div>
+        ) : null}
       </CardContent>
     </Card>
   );

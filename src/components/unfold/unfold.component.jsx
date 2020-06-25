@@ -11,7 +11,7 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
     {isHidden ? (
       <div>
         <Typography variant='body2' color='textSecondary' component='p'>
-          {movie.review.slice(0, 50)}
+          {movie.review.slice(0, 100)}
           <span
             className='toggle-text'
             onClick={() => {
