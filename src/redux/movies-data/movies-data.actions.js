@@ -5,12 +5,12 @@ export const addMovieReview = (review) => ({
   payload: review,
 });
 
-export const toggleReviewTextHidden = (title) => ({
+export const toggleReviewTextHidden = (movieId) => ({
   type: MoviesDataActionTypes.TOGGLE_REVIEW_TEXT_HIDDEN,
-  payload: title,
+  payload: movieId,
 });
 
-export const selectWatched = (title) => ({
+export const selectWatched = (movieId) => ({
   type: MoviesDataActionTypes.SELECT_WATCHED,
-  payload: title,
+  payload: movieId,
 });

@@ -36,10 +36,6 @@ const SubmitButton = ({
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const redirect = () => {
     if (type === '/review') {
       history.push('/watched');
@@ -100,7 +96,7 @@ const SubmitButton = ({
       </Button>
       <SimpleDialog
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         message='Please fill review form'
       />
     </div>

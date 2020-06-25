@@ -1,9 +1,7 @@
-#select-icon {
-  padding: 0;
-  padding-bottom: 6px;
-  flex: 1;
+.selection-container {
+  width: 50%;
+}
 
-  span:first-child {
-    width: 50%;
-  }
+#select-icon {
+  padding-top: 4px;
 }

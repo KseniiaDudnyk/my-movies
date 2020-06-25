@@ -15,7 +15,7 @@ const SimpleSnackbar = ({ message, open, handleClose }) => {
 
   return (
     <Snackbar
-      autoHideDuration={1500}
+      autoHideDuration={1000}
       anchorOrigin={{ vertical, horizontal }}
       open={open}
       onClose={handleClose}

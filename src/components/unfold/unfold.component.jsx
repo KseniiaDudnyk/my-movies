@@ -15,7 +15,7 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
           <span
             className='toggle-text'
             onClick={() => {
-              toggleReviewTextHidden(movie.title);
+              toggleReviewTextHidden(movie.id);
             }}
           >
             more
@@ -28,7 +28,7 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
           {movie.review}
           <span
             className='toggle-text'
-            onClick={() => toggleReviewTextHidden(movie.title)}
+            onClick={() => toggleReviewTextHidden(movie.id)}
           >
             less
           </span>
@@ -39,7 +39,8 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
 );
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleReviewTextHidden: (title) => dispatch(toggleReviewTextHidden(title)),
+  toggleReviewTextHidden: (movieId) =>
+    dispatch(toggleReviewTextHidden(movieId)),
 });
 
 export default connect(null, mapDispatchToProps)(Unfold);

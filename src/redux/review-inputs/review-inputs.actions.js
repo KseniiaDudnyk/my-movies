@@ -29,7 +29,7 @@ export const resetReviewInputReducerData = () => ({
   type: ReviewActionTypes.RESET_REDUCER_DATA,
 });
 
-export const toggleFavorite = (title) => ({
+export const toggleFavorite = (movieId) => ({
   type: ReviewActionTypes.TOGGLE_FAVORITE,
-  payload: title,
+  payload: movieId,
 });

@@ -8,19 +8,14 @@ import { selectMovies } from '../../redux/movies-data/movies-data.selectors';
 import MovieCard from '../../components/movie-card/movie-card.component';
 import Header from '../../components/header/header.component';
 
-const WatchedMovies = ({ reviews }) => (
+const WatchedMovies = ({ movies }) => (
   <div>
     <Header text='Watched Movies List' />
+
     <div className='card-container'>
-      {reviews.map((review) => {
-        if (review.isWatched) {
-          return (
-            <MovieCard
-              key={review.id}
-              movie={review}
-              isWatched={review.isWatched}
-            />
-          );
+      {movies.map((movie) => {
+        if (movie.isWatched) {
+          return <MovieCard key={movie.id} movie={movie} />;
         } else {
           return null;
         }
@@ -30,7 +25,7 @@ const WatchedMovies = ({ reviews }) => (
 );
 
 const mapStateToProps = createStructuredSelector({
-  reviews: selectMovies,
+  movies: selectMovies,
 });
 
 export default connect(mapStateToProps)(WatchedMovies);

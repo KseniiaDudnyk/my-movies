@@ -18,6 +18,7 @@ const MovieCard = ({ movie }) => {
     rate,
     isFavorite,
     isReviewTextHidden,
+    id,
   } = movie;
 
   return (
@@ -39,10 +40,10 @@ const MovieCard = ({ movie }) => {
             </Typography>
             <StarIcon className='star-icon' />
 
-            <FavoriteSelection title={title} isFavorite={isFavorite} />
+            <FavoriteSelection isFavorite={isFavorite} movieId={id} />
           </div>
         ) : (
-          <WatchedSelection title={title} isWatched={isWatched} />
+          <WatchedSelection isWatched={isWatched} movieId={id} />
         )}
 
         <Unfold isHidden={isReviewTextHidden} movie={movie} />

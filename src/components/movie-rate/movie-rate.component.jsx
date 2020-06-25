@@ -13,7 +13,6 @@ import {
 } from '@material-ui/core';
 
 import { addMovieRate } from '../../redux/review-inputs/review-inputs.actions';
-import FavoriteSelection from '../favorite-selection/favorite-selection.component';
 import { selectIsMovieFavorite } from '../../redux/review-inputs/review-inputs.selectors';
 
 const MovieRate = ({ addMovieRate, isMovieFavorite }) => {
@@ -49,10 +48,6 @@ const MovieRate = ({ addMovieRate, isMovieFavorite }) => {
           ))}
         </RadioGroup>
       </FormControl>
-      <div className='favorite-icon'>
-        <FormLabel component='legend'>Add to Favorite</FormLabel>
-        <FavoriteSelection isFavorite={isMovieFavorite} title='New film' />
-      </div>
     </div>
   );
 };

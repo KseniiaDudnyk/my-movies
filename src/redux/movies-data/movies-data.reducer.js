@@ -109,7 +109,7 @@ const moviesDataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         movies: state.movies.map((el) => {
-          if (el.title === action.payload) {
+          if (el.id === action.payload) {
             return {
               ...el,
               isReviewTextHidden: !el.isReviewTextHidden,
@@ -126,7 +126,7 @@ const moviesDataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         movies: state.movies.map((el) => {
-          if (el.title === action.payload) {
+          if (el.id === action.payload) {
             return {
               ...el,
               isFavorite: !el.isFavorite,
@@ -143,7 +143,7 @@ const moviesDataReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         movies: state.movies.map((el) => {
-          if (el.title === action.payload) {
+          if (el.id === action.payload) {
             return {
               ...el,
               isWatched: true,

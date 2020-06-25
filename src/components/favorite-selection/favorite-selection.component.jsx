@@ -6,35 +6,19 @@ import './favorite-selection.styles.scss';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { IconButton } from '@material-ui/core';
 import { toggleFavorite } from '../../redux/review-inputs/review-inputs.actions';
-import SimpleSnackbar from '../simple-snackbar/simple-snackbar.component';
 
-const FavoriteSelection = ({ toggleFavorite, title, isFavorite }) => {
-  let message = 'Success';
-
-  const [open, setOpen] = React.useState(false);
-
-  const handleClick = () => {
-    setOpen(true);
-
-    toggleFavorite(title);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
+const FavoriteSelection = ({ toggleFavorite, movieId, isFavorite }) => {
   return (
     <div className='selection-container'>
-      <IconButton onClick={handleClick} id='favorite-icon'>
+      <IconButton onClick={() => toggleFavorite(movieId)} id='favorite-icon'>
         <FavoriteIcon color={isFavorite ? 'primary' : 'inherit'} />
       </IconButton>
-      <SimpleSnackbar open={open} message={message} handleClose={handleClose} />
     </div>
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  toggleFavorite: (title) => dispatch(toggleFavorite(title)),
+  toggleFavorite: (movieId) => dispatch(toggleFavorite(movieId)),
 });
 
 export default connect(null, mapDispatchToProps)(FavoriteSelection);
