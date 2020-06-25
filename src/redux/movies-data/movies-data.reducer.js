@@ -86,7 +86,7 @@ const INITIAL_STATE = {
       title: 'Knives Out',
       review:
         'A detective investigates the death of a patriarch of an eccentric, combative family.',
-      genres: ['comedy', 'drama', 'drama', 'mystery', 'thriller'],
+      genres: ['comedy', 'drama', 'mystery', 'thriller'],
       rate: '10',
       posterUrl:
         'https://upload.wikimedia.org/wikipedia/ru/thumb/8/83/Knives_Out_%28film%29.jpg/202px-Knives_Out_%28film%29.jpg',

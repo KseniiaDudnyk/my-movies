@@ -19,7 +19,7 @@ const WatchedSelection = ({ selectWatched, isWatched, movieId, title }) => {
 
   return (
     <div className='selection-container'>
-      <Tooltip id='tooltip' title='watched'>
+      <Tooltip id='tooltip' title='select as watched'>
         <IconButton
           onClick={handleClick}
           id='select-icon'

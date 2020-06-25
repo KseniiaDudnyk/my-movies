@@ -54,7 +54,13 @@ const MovieCard = ({ movie }) => {
             />
           </div>
         ) : (
-          <WatchedSelection isWatched={isWatched} movieId={id} title={title} />
+          <div className='movie-rate'>
+            <WatchedSelection
+              isWatched={isWatched}
+              movieId={id}
+              title={title}
+            />
+          </div>
         )}
 
         <Unfold isHidden={isReviewTextHidden} movie={movie} />
