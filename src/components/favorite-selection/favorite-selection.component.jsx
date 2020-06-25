@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useSnackbar } from 'notistack';
 
 import './favorite-selection.styles.scss';
 
@@ -7,23 +8,31 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { IconButton, Tooltip } from '@material-ui/core';
 import { toggleFavorite } from '../../redux/review-inputs/review-inputs.actions';
 
-const FavoriteSelection = ({ toggleFavorite, movieId, isFavorite }) => {
-  let tooltipMsg = '';
+const FavoriteSelection = ({ toggleFavorite, movieId, isFavorite, title }) => {
+  const { enqueueSnackbar } = useSnackbar();
 
-  const createTooltipMsg = () => {
+  let actionMsg = '';
+
+  const createActionMsg = () => {
     if (isFavorite) {
-      tooltipMsg = 'remove';
+      actionMsg = 'remove from fav';
     } else {
-      tooltipMsg = 'add';
+      actionMsg = 'add to fav';
     }
   };
 
-  createTooltipMsg();
+  createActionMsg();
+
+  const handleClick = () => {
+    enqueueSnackbar(`${title} is successfully ${actionMsg}`);
+
+    toggleFavorite(movieId);
+  };
 
   return (
     <div className='selection-container'>
-      <Tooltip title={tooltipMsg} id='tooltip'>
-        <IconButton onClick={() => toggleFavorite(movieId)} id='favorite-icon'>
+      <Tooltip title={actionMsg} id='tooltip'>
+        <IconButton onClick={handleClick} id='favorite-icon'>
           <FavoriteIcon color={isFavorite ? 'primary' : 'inherit'} />
         </IconButton>
       </Tooltip>

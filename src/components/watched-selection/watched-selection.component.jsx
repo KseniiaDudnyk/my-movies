@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { useSnackbar } from 'notistack';
 
 import './watched-selection.styles.scss';
 
@@ -7,12 +8,20 @@ import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { IconButton, Tooltip } from '@material-ui/core';
 import { selectWatched } from '../../redux/movies-data/movies-data.actions';
 
-const WatchedSelection = ({ selectWatched, isWatched, movieId }) => {
+const WatchedSelection = ({ selectWatched, isWatched, movieId, title }) => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    enqueueSnackbar(`${title} is removed to watched movies`);
+
+    selectWatched(movieId);
+  };
+
   return (
     <div className='selection-container'>
       <Tooltip id='tooltip' title='watched'>
         <IconButton
-          onClick={() => selectWatched(movieId)}
+          onClick={handleClick}
           id='select-icon'
           aria-label='select watched'
         >

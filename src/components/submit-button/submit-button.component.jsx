@@ -97,7 +97,7 @@ const SubmitButton = ({
       <SimpleDialog
         open={open}
         onClose={() => setOpen(false)}
-        message='Please fill review form'
+        message='Please fill the form'
       />
     </div>
   );
