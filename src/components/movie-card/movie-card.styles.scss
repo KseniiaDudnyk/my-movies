@@ -2,79 +2,20 @@
 
 .movie-card {
   margin: 1%;
-  width: calc(100% / 6);
-  height: 100%;
 
   .poster {
     height: 350px;
-  }
-
-  .responsive-poster {
-    height: 200px;
+    width: 350px;
   }
 
   .movie-review-container {
     width: 100%;
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
 
-    .title {
-      width: 50%;
-      height: 100%;
-    }
-
-    .responsive-title {
-      width: 100%;
-      font-size: 22px;
-      height: 100%;
-    }
-
-    .movie-rate {
-      width: 50%;
-      height: 5%;
-      display: flex;
-      flex-wrap: wrap;
-
-      .rate-number {
-        width: 20%;
-        text-align: end;
-      }
-
-      .star-icon {
-        width: 20%;
-        padding: 1%;
-      }
-    }
-
-    .responsive-movie-rate {
-      width: 100%;
-      height: 5%;
-      display: flex;
-      flex-wrap: wrap;
-
-      .rate-number {
-        font-size: 16px;
-        width: 20%;
-        text-align: end;
-      }
-
-      .star-icon {
-        width: 20%;
-        height: 16px;
-        padding: 1%;
-      }
-    }
-
-    .genres-container {
-      margin-top: $base-margin;
-
-      .MuiChip-root {
-        margin: 5px;
-      }
-    }
-
-    p {
-      width: 90%;
+    .star-icon {
+      padding: 1%;
     }
   }
 }

@@ -1,3 +1,5 @@
+@import '../../shared.styles.scss';
+
 .review-text {
   width: 90%;
   display: flex;
@@ -13,5 +15,13 @@
     font-size: 10px;
     margin-left: 2%;
     color: black;
+  }
+
+  .genres-container {
+    margin-top: $base-margin;
+
+    .MuiChip-root {
+      margin: 5px;
+    }
   }
 }

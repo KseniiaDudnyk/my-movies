@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './unfold.styles.scss';
 
-import { Typography } from '@material-ui/core';
+import { Typography, Chip } from '@material-ui/core';
 import { toggleReviewTextHidden } from '../../redux/movies-data/movies-data.actions';
 
 const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
@@ -33,6 +33,18 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
             less
           </span>
         </Typography>
+
+        <div className='genres-container'>
+          {movie.genres.map((genre) => {
+            return (
+              <Chip
+                variant='outlined'
+                key={`${movie.id}${genre}`}
+                label={genre}
+              />
+            );
+          })}
+        </div>
       </div>
     )}
   </div>

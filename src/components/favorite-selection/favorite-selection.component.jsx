@@ -30,7 +30,7 @@ const FavoriteSelection = ({ toggleFavorite, movieId, isFavorite, title }) => {
   };
 
   return (
-    <div className='selection-container'>
+    <div>
       <Tooltip title={actionMsg} id='tooltip'>
         <IconButton onClick={handleClick} id='favorite-icon'>
           <FavoriteIcon color={isFavorite ? 'primary' : 'inherit'} />
