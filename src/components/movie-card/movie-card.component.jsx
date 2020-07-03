@@ -47,9 +47,10 @@ const MovieCard = ({ movie }) => {
 
           <Grid container direction='row'>
             {isWatched ? (
-              <Grid container justify='center'>
-                <Typography variant='h6'>{rate}</Typography>
-                <StarIcon className='star-icon' />
+              <Grid container justify='space-between'>
+                <Typography variant='h6'>
+                  {rate} <StarIcon className='star-icon' />
+                </Typography>
 
                 <FavoriteSelection
                   isFavorite={isFavorite}

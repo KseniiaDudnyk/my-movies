@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './movie-inputs.styles.scss';
 
-import { TextField, Button, Grid } from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import {
   addMovieTitle,
   addMovieReviewText,

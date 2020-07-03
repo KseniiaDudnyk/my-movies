@@ -9,6 +9,7 @@ import ReviewForm from './pages/review/review-form.component';
 import WatchedMovies from './pages/watched-movies/watched-movies.component';
 import NextToWatch from './pages/next-to-watch/next-to-watch.component';
 import FavoriteMovies from './pages/favorite-movies/favorite-movies.component.jsx';
+import SignIn from './pages/sign-in/sign-in.component';
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
         <NavBar />
         <Switch>
           <Route exact path='/' component={HomePage} />
+          <Route exact path='/sign-in' component={SignIn} />
           <Route exact path='/review' component={ReviewForm} />
           <Route path='/watched' component={WatchedMovies} />
           <Route path='/next-to-watch' component={NextToWatch} />

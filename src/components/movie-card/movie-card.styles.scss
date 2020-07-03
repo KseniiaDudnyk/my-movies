@@ -14,8 +14,13 @@
     display: flex;
     flex-wrap: wrap;
 
+    h6 {
+      width: 20%;
+    }
+
     .star-icon {
-      padding: 1%;
+      height: 50%;
+      padding-bottom: 5%;
     }
   }
 }
