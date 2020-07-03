@@ -1,9 +1,13 @@
 span :hover {
-  color: red;
+  color: #841818;
 }
 
 Button:hover {
-  color: red;
+  color: #841818;
+}
+
+.MuiButton-iconSizeMedium {
+  color: #841818;
 }
 
 a {

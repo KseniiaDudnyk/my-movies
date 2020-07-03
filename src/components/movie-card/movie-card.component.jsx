@@ -58,7 +58,7 @@ const MovieCard = ({ movie }) => {
                 />
               </Grid>
             ) : (
-              <Grid container>
+              <Grid container justify='flex-end'>
                 <WatchedSelection
                   isWatched={isWatched}
                   movieId={id}
@@ -68,11 +68,13 @@ const MovieCard = ({ movie }) => {
             )}
           </Grid>
 
-          <Unfold
-            className='unfold'
-            isHidden={isReviewTextHidden}
-            movie={movie}
-          />
+          <Grid item>
+            <Unfold
+              className='unfold'
+              isHidden={isReviewTextHidden}
+              movie={movie}
+            />
+          </Grid>
         </CardContent>
       </Grid>
     </Card>

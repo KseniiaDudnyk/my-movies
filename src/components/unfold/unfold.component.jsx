@@ -9,7 +9,7 @@ import { toggleReviewTextHidden } from '../../redux/movies-data/movies-data.acti
 const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
   <div className='review-text'>
     {isHidden ? (
-      <div>
+      <div className='review-text'>
         <Typography variant='body2' color='textSecondary' component='p'>
           {movie.review.slice(0, 100)}
           <span
