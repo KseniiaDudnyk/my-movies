@@ -69,7 +69,7 @@ const MovieGenres = ({ addMovieGenre }) => {
   return (
     <div className='checkboxes-container'>
       <FormLabel component='legend'>Select movie genres</FormLabel>
-      <FormGroup row>
+      <FormGroup row style={{ justifyContent: 'space-between' }}>
         {genres.map((genre) => (
           <FormControlLabel
             key={genre}

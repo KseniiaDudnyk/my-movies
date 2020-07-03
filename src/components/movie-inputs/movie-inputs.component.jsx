@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './movie-inputs.styles.scss';
 
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Grid } from '@material-ui/core';
 import {
   addMovieTitle,
   addMovieReviewText,
@@ -47,13 +47,14 @@ const MovieInputs = ({
           color='secondary'
           onChange={handleChangeTitle}
         />
+
         <TextField
           className='review'
           multiline
           id='outlined-multiline-static'
           label='Review'
           variant='outlined'
-          rows={20}
+          rows={15}
           color='secondary'
           onChange={handleChangeReview}
         />

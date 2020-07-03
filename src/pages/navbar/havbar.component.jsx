@@ -56,9 +56,12 @@ const NavBar = ({ name, image }) => {
         )}
 
         <div className='user-data'>
-          <Typography className='name' variant='h6'>
-            {name}
-          </Typography>
+          {isMatches ? (
+            <Typography className='name' variant='h6'>
+              {name}
+            </Typography>
+          ) : null}
+
           <Avatar alt={name} src={image} />
         </div>
       </Toolbar>
