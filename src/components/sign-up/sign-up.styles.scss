@@ -1,0 +1,24 @@
+@import '../../shared.styles';
+
+.sign-up-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 5%;
+  width: 50%;
+
+  .email,
+  .password {
+    width: $input-field-width;
+    margin: $base-margin;
+  }
+
+  .sign-up-btn {
+    width: $input-field-width;
+    margin: $base-margin;
+
+    :hover {
+      color: black;
+    }
+  }
+}

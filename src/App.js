@@ -11,7 +11,7 @@ import ReviewForm from './pages/review/review-form.component';
 import WatchedMovies from './pages/watched-movies/watched-movies.component';
 import NextToWatch from './pages/next-to-watch/next-to-watch.component';
 import FavoriteMovies from './pages/favorite-movies/favorite-movies.component.jsx';
-import SignIn from './pages/sign-in/sign-in.component';
+import SignInUpForm from './pages/sign-in-up-form/sign-in-up-form.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { getCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
@@ -51,7 +51,7 @@ class App extends React.Component {
             exact
             path='/sign-in'
             render={() =>
-              this.props.currentUser ? <Redirect to='/' /> : <SignIn />
+              this.props.currentUser ? <Redirect to='/' /> : <SignInUpForm />
             }
           />
           <Route exact path='/review' component={ReviewForm} />

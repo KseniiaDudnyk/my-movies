@@ -1,0 +1,22 @@
+@import '../../shared.styles';
+
+.sign-up-in-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sign-in {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+
+  .sign-in-btn {
+    width: $input-field-width;
+    height: 10%;
+    margin-top: 50%;
+
+    :hover {
+      color: black;
+    }
+  }
+}
