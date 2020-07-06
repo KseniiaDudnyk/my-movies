@@ -14,6 +14,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Header from '../../components/header/header.component';
 import SimpleDialog from '../../components/simple-dialog/simple-dialog.component';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 const SignIn = () => {
   const [values, setValues] = React.useState({
@@ -108,8 +109,14 @@ const SignIn = () => {
         </form>
 
         <div className='sign-in-google'>
-          <Button className='sign-in-btn' color='primary' variant='contained'>
-            Sign In With Google
+          <Button
+            onClick={signInWithGoogle}
+            className='sign-in-btn'
+            color='primary'
+            variant='contained'
+          >
+            {' '}
+            Sign In With Google{' '}
           </Button>
         </div>
       </div>

@@ -13,8 +13,10 @@
     justify-content: flex-end;
     cursor: default;
 
-    .name {
-      margin-right: $base-margin;
+    .user {
+      width: 70%;
+      display: flex;
+      justify-content: space-between;
     }
   }
 }

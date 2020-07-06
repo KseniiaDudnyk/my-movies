@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import movieDefault from '../../assets/images/movie-default.jpg';
 
 import './navbar.styles.scss';
 
@@ -12,14 +13,12 @@ import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import UpdateIcon from '@material-ui/icons/Update';
 import HomeIcon from '@material-ui/icons/Home';
-import {
-  selectUserName,
-  selectUserImage,
-} from '../../redux/user/user.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ResponsiveNavBar from './responsive-navbar.component';
+import { auth } from '../../firebase/firebase.utils';
 
-const NavBar = ({ name, image }) => {
+const NavBar = ({ user }) => {
   const isMatches = useMediaQuery('(min-width:940px)');
 
   return (
@@ -56,13 +55,26 @@ const NavBar = ({ name, image }) => {
         )}
 
         <div className='user-data'>
-          {isMatches ? (
+          {user ? (
+            <div className='user'>
+              <Avatar
+                alt={user.displayName}
+                src={!user.photoURL ? movieDefault : user.photoURL}
+              />
+              <Button onClick={() => auth.signOut()}>SIGN OUT</Button>
+            </div>
+          ) : (
+            <Link to='/sign-in'>
+              <Button>SIGN IN</Button>
+            </Link>
+          )}
+          {/* {isMatches ? (
             <Typography className='name' variant='h6'>
               {name}
             </Typography>
           ) : null}
 
-          <Avatar alt={name} src={image} />
+          <Avatar alt={name} src={image} /> */}
         </div>
       </Toolbar>
     </AppBar>
@@ -70,8 +82,7 @@ const NavBar = ({ name, image }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  name: selectUserName,
-  image: selectUserImage,
+  user: selectCurrentUser,
 });
 
 export default connect(mapStateToProps)(NavBar);

@@ -1,12 +1,17 @@
-import kseniia from '../../assets/images/kseniia.jpg';
+import { UserActionTypes } from './user.types';
 
 const INITIAL_STATE = {
-  name: 'Kseniia',
-  image: kseniia,
+  currentUser: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case UserActionTypes.GET_USER_DATA:
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
+
     default:
       return state;
   }
