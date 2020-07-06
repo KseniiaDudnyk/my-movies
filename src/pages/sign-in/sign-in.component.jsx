@@ -14,12 +14,18 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Header from '../../components/header/header.component';
 import SimpleDialog from '../../components/simple-dialog/simple-dialog.component';
-import { signInWithGoogle } from '../../firebase/firebase.utils';
+import {
+  auth,
+  signInWithGoogle,
+  createUserProfileDocument,
+} from '../../firebase/firebase.utils';
 
 const SignIn = () => {
   const [values, setValues] = React.useState({
+    email: '',
     name: '',
     password: '',
+    confirmPassword: '',
     showPassword: false,
     open: false,
   });
@@ -36,11 +42,32 @@ const SignIn = () => {
     event.preventDefault();
   };
 
-  const submitForm = () => {
-    if (values.name.length < 5 || values.password < 5) {
+  const submitForm = async (event) => {
+    event.preventDefault();
+
+    if (values.email.length < 5 || values.password < 5) {
       setValues({ ...values, open: true });
     }
-    console.log(values.name);
+
+    if (values.password !== values.confirmPassword) {
+      alert("passwords don't match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        values.email,
+        values.password
+      );
+
+      await createUserProfileDocument(user);
+
+      setValues({ name: '', password: '', ...values });
+    } catch (err) {
+      console.log(err);
+    }
+
+    console.log(values);
   };
 
   return (
@@ -49,30 +76,20 @@ const SignIn = () => {
 
       <div className='sign-in-form'>
         <form className='sign-in-password' noValidate autoComplete='off'>
-          <FormControl
-            className='name'
-            variant='outlined'
-            required
-            // error={values.name.length < 5}
-          >
+          <FormControl className='name' variant='outlined' required>
             <InputLabel color='secondary' htmlFor='outlined-adornment-name'>
-              Name
+              Email
             </InputLabel>
             <OutlinedInput
               color='secondary'
               id='outlined-adornment-name'
-              value={values.name}
-              onChange={handleChange('name')}
+              value={values.email}
+              onChange={handleChange('email')}
               labelWidth={50}
             />
           </FormControl>
 
-          <FormControl
-            className='password'
-            variant='outlined'
-            required
-            // error={values.password.length < 5}
-          >
+          <FormControl className='password' variant='outlined' required>
             <InputLabel color='secondary' htmlFor='outlined-adornment-password'>
               Password
             </InputLabel>
@@ -98,13 +115,39 @@ const SignIn = () => {
             />
           </FormControl>
 
+          <FormControl className='password' variant='outlined' required>
+            <InputLabel color='secondary' htmlFor='outlined-adornment-password'>
+              Confirm Password
+            </InputLabel>
+            <OutlinedInput
+              color='secondary'
+              id='outlined-adornment-confirm-password'
+              type={values.showPassword ? 'text' : 'password'}
+              value={values.confirmPassword}
+              onChange={handleChange('confirmPassword')}
+              endAdornment={
+                <InputAdornment position='end'>
+                  <IconButton
+                    aria-label='toggle password visibility'
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge='end'
+                  >
+                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              labelWidth={150}
+            />
+          </FormControl>
+
           <Button
             className='sign-in-btn'
             color='secondary'
             variant='contained'
             onClick={submitForm}
           >
-            Sign In
+            Sign Up
           </Button>
         </form>
 
