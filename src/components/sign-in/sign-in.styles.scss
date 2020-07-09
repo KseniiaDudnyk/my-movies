@@ -1,6 +1,6 @@
 @import '../../shared.styles';
 
-.sign-up-email-password {
+.sign-in-email-password {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -11,7 +11,7 @@
     margin: $base-margin;
   }
 
-  .sign-up-btn {
+  .sign-in-btn {
     width: $input-field-width;
     margin: $base-margin;
 

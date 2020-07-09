@@ -3,20 +3,20 @@
 .sign-up-in-form {
   display: flex;
   flex-wrap: wrap;
-}
 
-.sign-in {
-  width: 30%;
-  display: flex;
-  justify-content: center;
+  .sign-in {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
-  .sign-in-btn {
-    width: $input-field-width;
-    height: 10%;
-    margin-top: 50%;
+    .sign-in-btn-google {
+      width: $input-field-width;
+      height: 10%;
 
-    :hover {
-      color: black;
+      :hover {
+        color: black;
+      }
     }
   }
 }

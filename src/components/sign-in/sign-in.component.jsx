@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './sign-up.styles.scss';
+import './sign-in.styles.scss';
 
 import {
   Button,
@@ -12,17 +12,15 @@ import {
 } from '@material-ui/core';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { auth } from '../../firebase/firebase.utils';
 import SimpleDialog from '../../components/simple-dialog/simple-dialog.component';
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import Header from '../header/header.component';
 
-const SignUp = () => {
+const SignIn = () => {
   const [values, setValues] = React.useState({
     email: '',
     password: '',
-    confirmPassword: '',
     showPassword: false,
-    showConfirmPassword: false,
     open: false,
     message: '',
   });
@@ -35,10 +33,6 @@ const SignUp = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
-  const handleClickShowConfirmPassword = () => {
-    setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
-  };
-
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
@@ -46,46 +40,26 @@ const SignUp = () => {
   const submitForm = async (event) => {
     event.preventDefault();
 
-    if (values.email.length < 5 || values.password < 5) {
-      setValues({
-        ...values,
-        open: true,
-        message: 'Invalid password or Email',
-      });
-    }
-
-    if (values.password !== values.confirmPassword) {
-      setValues({ ...values, open: true, message: "passwords don't match" });
-
-      return;
-    }
-
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        values.email,
-        values.password
-      );
-
-      await createUserProfileDocument(user);
+      await auth.signInWithEmailAndPassword(values.email, values.password);
 
       setValues({ name: '', password: '', ...values });
     } catch (err) {
       setValues({ ...values, open: true, message: err.message });
     }
   };
-
   return (
     <div>
-      <Header text=' Sing Up With Email' />
+      <Header text='Sign In with Email or Google' />
 
-      <form className='sign-up-email-password' noValidate autoComplete='off'>
+      <form className='sign-in-email-password'>
         <FormControl className='email' variant='outlined' required>
           <InputLabel color='secondary' htmlFor='outlined-adornment-email'>
             Email
           </InputLabel>
           <OutlinedInput
             color='secondary'
-            id='outlined-adornment-email'
+            id='outlined-adornment-email-sign-in'
             value={values.email}
             onChange={handleChange('email')}
             labelWidth={50}
@@ -98,7 +72,7 @@ const SignUp = () => {
           </InputLabel>
           <OutlinedInput
             color='secondary'
-            id='outlined-adornment-password'
+            id='outlined-adornment-password-sign-in'
             type={values.showPassword ? 'text' : 'password'}
             value={values.password}
             onChange={handleChange('password')}
@@ -118,43 +92,13 @@ const SignUp = () => {
           />
         </FormControl>
 
-        <FormControl className='password' variant='outlined' required>
-          <InputLabel color='secondary' htmlFor='outlined-adornment-password'>
-            Confirm Password
-          </InputLabel>
-          <OutlinedInput
-            color='secondary'
-            id='outlined-adornment-confirm-password'
-            type={values.showConfirmPassword ? 'text' : 'password'}
-            value={values.confirmPassword}
-            onChange={handleChange('confirmPassword')}
-            endAdornment={
-              <InputAdornment position='end'>
-                <IconButton
-                  aria-label='toggle password visibility'
-                  onClick={handleClickShowConfirmPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge='end'
-                >
-                  {values.showConfirmPassword ? (
-                    <Visibility />
-                  ) : (
-                    <VisibilityOff />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            }
-            labelWidth={150}
-          />
-        </FormControl>
-
         <Button
-          className='sign-up-btn'
+          className='sign-in-btn'
           color='secondary'
           variant='contained'
           onClick={submitForm}
         >
-          Sign Up
+          Sign In With Email and Password
         </Button>
       </form>
 
@@ -167,4 +111,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

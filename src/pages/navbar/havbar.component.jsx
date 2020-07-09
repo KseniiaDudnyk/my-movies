@@ -61,6 +61,7 @@ const NavBar = ({ user }) => {
                 alt={user.displayName}
                 src={!user.photoURL ? movieDefault : user.photoURL}
               />
+
               <Button onClick={() => auth.signOut()}>SIGN OUT</Button>
             </div>
           ) : (
