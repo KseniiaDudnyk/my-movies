@@ -6,7 +6,7 @@ import movieDefault from '../../assets/images/movie-default.jpg';
 
 import './navbar.styles.scss';
 
-import { AppBar, Toolbar, Typography, Button, Avatar } from '@material-ui/core';
+import { AppBar, Toolbar, Button, Avatar } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import PlaylistPlayIcon from '@material-ui/icons/PlaylistPlay';
@@ -16,7 +16,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ResponsiveNavBar from './responsive-navbar.component';
-import { auth } from '../../firebase/firebase.utils';
+import Menu from '../../components/menu/menu.component';
 
 const NavBar = ({ user }) => {
   const isMatches = useMediaQuery('(min-width:940px)');
@@ -60,22 +60,16 @@ const NavBar = ({ user }) => {
               <Avatar
                 alt={user.displayName}
                 src={!user.photoURL ? movieDefault : user.photoURL}
+                style={{ marginRight: 7 + 'px' }}
               />
 
-              <Button onClick={() => auth.signOut()}>SIGN OUT</Button>
+              <Menu />
             </div>
           ) : (
             <Link to='/sign-in'>
               <Button>SIGN IN</Button>
             </Link>
           )}
-          {/* {isMatches ? (
-            <Typography className='name' variant='h6'>
-              {name}
-            </Typography>
-          ) : null}
-
-          <Avatar alt={name} src={image} /> */}
         </div>
       </Toolbar>
     </AppBar>
