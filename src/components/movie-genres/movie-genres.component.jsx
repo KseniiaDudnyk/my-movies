@@ -11,26 +11,10 @@ import {
 } from '@material-ui/core';
 
 import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
+import { getGenresCollection } from '../../firebase/firebase.utils';
 
 const MovieGenres = ({ addMovieGenre }) => {
-  const genres = [
-    'comedy',
-    'horror',
-    'drama',
-    'action',
-    'detective',
-    'adventure',
-    'crime',
-    'historical',
-    'sci-fi',
-    'war',
-    'disaster',
-    'fantasy',
-    'LGBT',
-    'cartoon',
-    'thriller',
-    'mystery',
-  ];
+  const genres = getGenresCollection();
 
   const generate = () => {
     let someMap = new Map();

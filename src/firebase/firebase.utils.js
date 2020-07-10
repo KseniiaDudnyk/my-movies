@@ -39,6 +39,17 @@ export const createUserProfileDocument = async (userAuth, data) => {
   return userRef;
 };
 
+export const getGenresCollection = async () => {
+  const genresRef = firestore.doc('movie-genres/Tiat3jFGkYCcH5DDCEfL');
+
+  const genresArr = await genresRef
+    .get()
+    .then((doc) => doc.data().name)
+    .catch((err) => console.log(err));
+
+  return genresArr;
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
