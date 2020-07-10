@@ -50,6 +50,21 @@ export const getGenresCollection = async () => {
   return genresArr;
 };
 
+export const moviesDataBase = [];
+
+const getMovieData = async () => {
+  const mdRef = firestore.collection(`movies-data`);
+
+  await mdRef
+    .get()
+    .then((snapShot) =>
+      snapShot.forEach((doc) => {
+        moviesDataBase.push(doc.data());
+      })
+    )
+    .catch((err) => console.log(err));
+};
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
@@ -59,5 +74,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+getMovieData();
 
 export default firebase;
