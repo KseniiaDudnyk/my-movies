@@ -1,5 +1,15 @@
 import { MoviesDataActionTypes } from './movies-data.types';
 
+export const getMovies = (movies) => ({
+  type: MoviesDataActionTypes.GET_MOVIES,
+  payload: movies,
+});
+
+export const getMovieGenres = (genres) => ({
+  type: MoviesDataActionTypes.GET_MOVIE_GENRES,
+  payload: genres,
+});
+
 export const addMovieReview = (review) => ({
   type: MoviesDataActionTypes.ADD_MOVIE_REVIEW,
   payload: review,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import './movie-genres.styles.scss';
 
@@ -11,10 +12,10 @@ import {
 } from '@material-ui/core';
 
 import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
-import { getGenresCollection } from '../../firebase/firebase.utils';
+import { selectMoviesGenres } from '../../redux/movies-data/movies-data.selectors';
 
 const MovieGenres = ({ addMovieGenre }) => {
-  const genres = getGenresCollection();
+  const genres = [];
 
   const generate = () => {
     let someMap = new Map();
@@ -72,8 +73,12 @@ const MovieGenres = ({ addMovieGenre }) => {
   );
 };
 
+const mapStateToProps = createStructuredSelector({
+  genresArr: selectMoviesGenres,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   addMovieGenre: (genre) => dispatch(addMovieGenre(genre)),
 });
 
-export default connect(null, mapDispatchToProps)(MovieGenres);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieGenres);

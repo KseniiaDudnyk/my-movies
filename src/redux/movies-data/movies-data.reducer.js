@@ -1,13 +1,25 @@
 import { MoviesDataActionTypes } from './movies-data.types';
 import { ReviewActionTypes } from '../review-inputs/review-inputs.types';
-import { moviesDataBase } from '../../firebase/firebase.utils';
 
 const INITIAL_STATE = {
-  movies: moviesDataBase,
+  movies: null,
+  genres: null,
 };
 
 const moviesDataReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case MoviesDataActionTypes.GET_MOVIES:
+      return {
+        ...state,
+        movies: action.payload,
+      };
+
+    case MoviesDataActionTypes.GET_MOVIE_GENRES:
+      return {
+        ...state,
+        genres: action.payload,
+      };
+
     case MoviesDataActionTypes.ADD_MOVIE_REVIEW:
       return {
         ...state,

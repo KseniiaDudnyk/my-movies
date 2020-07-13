@@ -15,12 +15,16 @@ import SignInUpForm from './pages/sign-in-up-form/sign-in-up-form.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { getCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import { getMovies } from './redux/movies-data/movies-data.actions';
+import { moviesDataBase } from './firebase/firebase.utils';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { getCurrentUser } = this.props;
+    const { getCurrentUser, getMovies } = this.props;
+
+    getMovies(moviesDataBase);
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -73,6 +77,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   getCurrentUser: (user) => dispatch(getCurrentUser(user)),
+  getMovies: (movies) => dispatch(getMovies(movies)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

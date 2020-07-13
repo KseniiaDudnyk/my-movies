@@ -12,6 +12,9 @@ const config = {
   appId: '1:685303557380:web:e69f11c7ff8b22cc9e7451',
 };
 
+export const moviesDataBase = [];
+export const genresArr = [];
+
 export const createUserProfileDocument = async (userAuth, data) => {
   if (!userAuth) return;
 
@@ -39,18 +42,18 @@ export const createUserProfileDocument = async (userAuth, data) => {
   return userRef;
 };
 
-export const getGenresCollection = async () => {
+const getGenresCollection = async () => {
   const genresRef = firestore.doc('movie-genres/Tiat3jFGkYCcH5DDCEfL');
 
-  const genresArr = await genresRef
+  const genres = await genresRef
     .get()
-    .then((doc) => doc.data().name)
+    .then((doc) => {
+      genresArr.push(doc.data().name);
+    })
     .catch((err) => console.log(err));
 
-  return genresArr;
+  return genres;
 };
-
-export const moviesDataBase = [];
 
 const getMovieData = async () => {
   const mdRef = firestore.collection(`movies-data`);
@@ -76,5 +79,6 @@ provider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 getMovieData();
+getGenresCollection();
 
 export default firebase;
