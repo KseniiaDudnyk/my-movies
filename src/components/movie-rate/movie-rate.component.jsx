@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 import './movie-rate.styles.scss';
 
@@ -13,9 +12,8 @@ import {
 } from '@material-ui/core';
 
 import { addMovieRate } from '../../redux/review-inputs/review-inputs.actions';
-import { selectIsMovieFavorite } from '../../redux/review-inputs/review-inputs.selectors';
 
-const MovieRate = ({ addMovieRate, isMovieFavorite }) => {
+const MovieRate = ({ addMovieRate }) => {
   const rateArr = Array(10)
     .fill(1)
     .map((i, idx) => (idx + i).toString());
@@ -56,8 +54,4 @@ const mapDispatchToProps = (dispatch) => ({
   addMovieRate: (rate) => dispatch(addMovieRate(rate)),
 });
 
-const mapStateToProps = createStructuredSelector({
-  isMovieFavorite: selectIsMovieFavorite,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MovieRate);
+export default connect(null, mapDispatchToProps)(MovieRate);

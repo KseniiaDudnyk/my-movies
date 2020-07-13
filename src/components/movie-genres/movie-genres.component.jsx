@@ -14,8 +14,14 @@ import {
 import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
 import { selectMoviesGenres } from '../../redux/movies-data/movies-data.selectors';
 
-const MovieGenres = ({ addMovieGenre }) => {
-  const genres = [];
+const MovieGenres = ({ addMovieGenre, genresArr }) => {
+  let genres;
+
+  if (!genresArr) {
+    genres = [];
+  } else {
+    genres = genresArr;
+  }
 
   const generate = () => {
     let someMap = new Map();

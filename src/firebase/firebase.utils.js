@@ -42,17 +42,20 @@ export const createUserProfileDocument = async (userAuth, data) => {
   return userRef;
 };
 
-const getGenresCollection = async () => {
+export const getGenresCollection = async () => {
   const genresRef = firestore.doc('movie-genres/Tiat3jFGkYCcH5DDCEfL');
 
-  const genres = await genresRef
+  await genresRef
     .get()
     .then((doc) => {
-      genresArr.push(doc.data().name);
+      const arr = doc.data().name;
+      arr.forEach((g) => {
+        genresArr.push(g);
+      });
     })
     .catch((err) => console.log(err));
 
-  return genres;
+  return genresArr;
 };
 
 const getMovieData = async () => {
