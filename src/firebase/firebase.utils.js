@@ -59,7 +59,7 @@ export const getGenresCollection = async () => {
 };
 
 const getMovieData = async () => {
-  const mdRef = firestore.collection(`movies-data`);
+  const mdRef = firestore.collection('movies-data');
 
   await mdRef
     .get()
@@ -70,6 +70,8 @@ const getMovieData = async () => {
     )
     .catch((err) => console.log(err));
 };
+
+
 
 firebase.initializeApp(config);
 

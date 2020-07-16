@@ -1,0 +1,12 @@
+.profile-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .profile {
+    width: 50%;
+    margin-top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

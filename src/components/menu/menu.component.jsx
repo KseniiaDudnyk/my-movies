@@ -82,7 +82,13 @@ const Menu = () => {
                     Home
                   </MenuItem>
 
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem
+                    to='/profile'
+                    component={Link}
+                    onClick={handleClose}
+                  >
+                    Profile
+                  </MenuItem>
                   <MenuItem onClick={() => auth.signOut()}>Logout</MenuItem>
                 </MenuList>
               </ClickAwayListener>

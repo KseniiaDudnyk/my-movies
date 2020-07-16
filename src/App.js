@@ -11,6 +11,7 @@ import ReviewForm from './pages/review/review-form.component';
 import WatchedMovies from './pages/watched-movies/watched-movies.component';
 import NextToWatch from './pages/next-to-watch/next-to-watch.component';
 import FavoriteMovies from './pages/favorite-movies/favorite-movies.component.jsx';
+import UserProfile from './pages/user-profile/user-profile.component';
 import SignInUpForm from './pages/sign-in-up-form/sign-in-up-form.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { getCurrentUser } from './redux/user/user.actions';
@@ -68,6 +69,7 @@ class App extends React.Component {
           <Route path='/next-to-watch' component={NextToWatch} />
           <Route path='/add-to-watch' component={ReviewForm} />
           <Route path='/favorite' component={FavoriteMovies} />
+          <Route path='/profile' component={UserProfile} />
 
           <Route render={() => <Redirect to='/' />} />
         </Switch>

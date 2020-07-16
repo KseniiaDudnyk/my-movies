@@ -14,19 +14,23 @@ const FavoriteMovies = ({ movies }) => (
     <Header text='List of Favorite Movies' />
 
     <div className='card-container'>
-      <Grid container justify='center' spacing={2}>
-        {movies.map((movie) => {
-          if (movie.isFavorite) {
-            return (
-              <Grid key={movie.id} item sm={6} lg={2}>
-                <MovieCard key={movie.id} movie={movie} />
-              </Grid>
-            );
-          } else {
-            return null;
-          }
-        })}
-      </Grid>
+      {movies ? (
+        <Grid container justify='center' spacing={2}>
+          {movies.map((movie) => {
+            if (movie.isFavorite) {
+              return (
+                <Grid key={movie.id} item sm={6} lg={2}>
+                  <MovieCard key={movie.id} movie={movie} />
+                </Grid>
+              );
+            } else {
+              return null;
+            }
+          })}
+        </Grid>
+      ) : (
+        <div>Please, wait</div>
+      )}
     </div>
   </div>
 );
