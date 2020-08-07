@@ -24,3 +24,8 @@ export const selectWatched = (movieId) => ({
   type: MoviesDataActionTypes.SELECT_WATCHED,
   payload: movieId,
 });
+
+export const leaveReview = (movie) => ({
+  type: MoviesDataActionTypes.LEAVE_REVIEW,
+  payload: movie,
+});

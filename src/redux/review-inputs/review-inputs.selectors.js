@@ -31,3 +31,8 @@ export const selectIsMovieFavorite = createSelector(
   [selectReview],
   (reviewInput) => reviewInput.isFavorite
 );
+
+export const selectInputsForReview = createSelector(
+  [selectReview],
+  (reviewInput) => reviewInput
+);

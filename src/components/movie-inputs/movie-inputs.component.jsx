@@ -25,6 +25,7 @@ class MovieInputs extends React.Component {
       addMovieTitle,
       addMovieReviewText,
       addMoviePosterLink,
+      inputs
     } = this.props;    
 
     // fileUploadHandler = (event) => {
@@ -68,6 +69,7 @@ class MovieInputs extends React.Component {
             label='Title'
             color='secondary'
             onChange={handleChangeTitle}
+            value={inputs.movieTitle}
             required
           />
 
@@ -80,6 +82,7 @@ class MovieInputs extends React.Component {
             rows={15}
             color='secondary'
             onChange={handleChangeReview}
+            value={inputs.movieReview}
             required
           />
 
@@ -92,6 +95,7 @@ class MovieInputs extends React.Component {
             label='Upload poster via Link'
             color='secondary'
             onChange={handlePosterLinkInput}
+            value={inputs.moviePosterLink}
           />
 
           {/* <div className='upload-img'>

@@ -62,8 +62,7 @@ const MovieCard = ({ movie }) => {
               <Grid container justify='flex-end'>
                 <WatchedSelection
                   isWatched={isWatched}
-                  movieId={id}
-                  title={title}
+                  movie={movie}
                 />
               </Grid>
             )}

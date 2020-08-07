@@ -60,6 +60,7 @@ export const convertMovieGenresSnapshotToMap = (genres) => {
     const obj = {};
     obj['name'] = genre;
     obj['id'] = id++;
+    obj['isSelected'] = false;
 
     genresObjArr.push(obj);
     return obj;

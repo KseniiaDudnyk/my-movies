@@ -1,4 +1,5 @@
 import { ReviewActionTypes } from './review-inputs.types';
+import { MoviesDataActionTypes } from '../movies-data/movies-data.types';
 
 const INITIAL_STATE = {
   movieRate: '0',
@@ -20,7 +21,7 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
     case ReviewActionTypes.ADD_MOVIE_GENRE:
       return {
         ...state,
-        movieGenres: action.payload,
+        movieGenres: [...state.movieGenres, action.payload],
       };
 
     case ReviewActionTypes.ADD_MOVIE_TITLE:
@@ -42,12 +43,20 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
       };
 
     case ReviewActionTypes.RESET_REDUCER_DATA:
-      return  INITIAL_STATE;
+      return INITIAL_STATE;
 
     case ReviewActionTypes.TOGGLE_FAVORITE:
       return {
         ...state,
         isFavorite: !state.isFavorite,
+      };
+
+    case MoviesDataActionTypes.LEAVE_REVIEW:
+      return {
+        ...state,
+        movieGenres: action.payload.genres,
+        movieTitle: action.payload.title,
+        moviePosterLink: action.payload.posterUrl,
       };
 
     default:
