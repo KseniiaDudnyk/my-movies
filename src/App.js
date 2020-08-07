@@ -20,17 +20,23 @@ import {
   getMovies,
   getMovieGenres,
 } from './redux/movies-data/movies-data.actions';
-import { moviesDataBase, genresArr } from './firebase/firebase.utils';
+import {
+  genresArr,
+  convertMoviesDataSnapshotToMap,
+  convertMovieGenresSnapshotToMap,
+  firestore,
+} from './firebase/firebase.utils';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
+  unsubscribeFromMoviesDataSnapshot = null;
+  unsubscribeFromMovieGenresSnapshot = null;
 
   componentDidMount() {
     const { getCurrentUser, getMovies, getMovieGenres } = this.props;
 
-    getMovies(moviesDataBase);
-
-    getMovieGenres(genresArr);
+    const moviesDataRef = firestore.collection('movies-data');
+    const movieGenresRef = firestore.collection('movie-genres');
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
@@ -46,11 +52,27 @@ class App extends React.Component {
         getCurrentUser(userAuth);
       }
     });
+
+    this.unsubscribeFromMoviesDataSnapshot = moviesDataRef.onSnapshot(
+      async (snapshot) => {
+        const collectionMap = convertMoviesDataSnapshotToMap(snapshot);
+        getMovies(collectionMap);
+      }
+    );
+
+    this.unsubscribeFromMovieGenresSnapshot = movieGenresRef.onSnapshot(
+      async (snapshot) => {
+        const collectionMap = convertMovieGenresSnapshotToMap(snapshot);
+        getMovieGenres(collectionMap);
+      }
+    )
   }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
+    this.unsubscribeFromMoviesDataSnapshot();
   }
+
   render() {
     return (
       <div>

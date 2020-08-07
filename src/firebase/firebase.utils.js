@@ -12,9 +12,6 @@ const config = {
   appId: '1:685303557380:web:e69f11c7ff8b22cc9e7451',
 };
 
-export const moviesDataBase = [];
-export const genresArr = [];
-
 export const createUserProfileDocument = async (userAuth, data) => {
   if (!userAuth) return;
 
@@ -42,36 +39,33 @@ export const createUserProfileDocument = async (userAuth, data) => {
   return userRef;
 };
 
-export const getGenresCollection = async () => {
-  const genresRef = firestore.doc('movie-genres/Tiat3jFGkYCcH5DDCEfL');
+export const convertMoviesDataSnapshotToMap = (moviesData) => {
+  const transformedMoviesData = moviesData.docs.map((doc) => {
+    return doc.data();
+  });
 
-  await genresRef
-    .get()
-    .then((doc) => {
-      const arr = doc.data().name;
-      arr.forEach((g) => {
-        genresArr.push(g);
-      });
-    })
-    .catch((err) => console.log(err));
-
-  return genresArr;
+  return transformedMoviesData;
 };
 
-const getMovieData = async () => {
-  const mdRef = firestore.collection('movies-data');
+export const convertMovieGenresSnapshotToMap = (genres) => {
+  const genresObjArr = [];
 
-  await mdRef
-    .get()
-    .then((snapShot) =>
-      snapShot.forEach((doc) => {
-        moviesDataBase.push(doc.data());
-      })
-    )
-    .catch((err) => console.log(err));
+  const genresDataFromFirebase = genres.docs.map((doc) => {
+    return doc.data().name;
+  });
+
+  let id = 0;
+
+  genresDataFromFirebase[0].map((genre) => {
+    const obj = new Object();
+    obj['name'] = genre;
+    obj['id'] = id++;
+
+    genresObjArr.push(obj);
+  });
+  
+  return genresObjArr;
 };
-
-
 
 firebase.initializeApp(config);
 
@@ -82,8 +76,5 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-getMovieData();
-getGenresCollection();
 
 export default firebase;

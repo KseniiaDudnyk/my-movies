@@ -15,26 +15,7 @@ import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
 import { selectMoviesGenres } from '../../redux/movies-data/movies-data.selectors';
 
 const MovieGenres = ({ addMovieGenre, genresArr }) => {
-  let genres;
-
-  if (!genresArr) {
-    genres = [];
-  } else {
-    genres = genresArr;
-  }
-
-  const generate = () => {
-    let someMap = new Map();
-
-    genres.map((genre) => {
-      return someMap.set(genre, false);
-    });
-    return Object.fromEntries(someMap.entries());
-  };
-
-  const obj = generate();
-
-  const [state] = React.useState({ ...obj });
+  const [state] = React.useState({ ...genresArr });
 
   const selectedGenres = [];
 
@@ -43,17 +24,16 @@ const MovieGenres = ({ addMovieGenre, genresArr }) => {
     let checked = event.target.checked;
 
     if (!checked) {
-      let index = selectedGenres
+      let indexOfGenreToRemove = selectedGenres
         .map((genre) => {
           return genre[name];
         })
         .indexOf(true);
 
-      selectedGenres.splice(index, 1);
+      selectedGenres.splice(indexOfGenreToRemove, 1);
     } else {
       selectedGenres.push({ [name]: checked });
     }
-
     addMovieGenre(selectedGenres);
   };
 
@@ -61,19 +41,23 @@ const MovieGenres = ({ addMovieGenre, genresArr }) => {
     <div className='checkboxes-container'>
       <FormLabel component='legend'>Select movie genres</FormLabel>
       <FormGroup row style={{ justifyContent: 'space-between' }}>
-        {genres.map((genre) => (
-          <FormControlLabel
-            key={genre}
-            control={
-              <Checkbox
-                checked={state.genre}
-                onChange={handleChange}
-                name={genre}
-              />
-            }
-            label={genre}
-          />
-        ))}
+        {genresArr ? (
+          genresArr.map((genre) => (
+            <FormControlLabel
+              key={genre.id}
+              control={
+                <Checkbox
+                  checked={state.genre}
+                  onChange={handleChange}
+                  name={genre.name}
+                />
+              }
+              label={genre.name}
+            />
+          ))
+        ) : (
+          <h1>Please, wait</h1>
+        )}
       </FormGroup>
     </div>
   );
