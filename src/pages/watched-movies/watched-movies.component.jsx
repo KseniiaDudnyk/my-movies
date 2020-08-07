@@ -19,7 +19,7 @@ const WatchedMovies = ({ movies }) => (
           {movies.map((movie) => {
             if (movie.isWatched) {
               return (
-                <Grid key={movie.id} item sm={6} lg={2}>
+                <Grid key={movie.id} item sm={6} lg={3}>
                   <MovieCard key={movie.id} movie={movie} />
                 </Grid>
               );

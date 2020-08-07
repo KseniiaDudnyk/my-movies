@@ -10,90 +10,107 @@ import {
   addMoviePosterLink,
 } from '../../redux/review-inputs/review-inputs.actions';
 
-const MovieInputs = ({
-  addMovieTitle,
-  addMovieReviewText,
-  addMoviePosterLink,
-}) => {
-  // fileUploadHandler = (event) => {
-  //     selectedFile: event.target.files[0],
-  // };
-  let posterLink = '';
+class MovieInputs extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const handleChangeTitle = (event) => {
-    addMovieTitle(event.target.value);
-  };
+    this.state = {
+      posterLinkFormatErr: false,
+      errorMsg: ''
+    }
+  }
+  
+  render() {
+    const {
+      addMovieTitle,
+      addMovieReviewText,
+      addMoviePosterLink,
+    } = this.props;    
 
-  const handleChangeReview = (event) => {
-    addMovieReviewText(event.target.value);
-  };
+    // fileUploadHandler = (event) => {
+    //     selectedFile: event.target.files[0],
+    // };
+    let posterLink = '';
 
-  const handleUploadPoster = () => {
-    addMoviePosterLink(posterLink);
-  };
+    const handleChangeTitle = (event) => {
+      addMovieTitle(event.target.value);
+    };
 
-  const handlePosterLinkInput = (event) => {
-    posterLink = event.target.value;
-  };
+    const handleChangeReview = (event) => {
+      addMovieReviewText(event.target.value);
+    };
 
-  return (
-    <div>
-      <form className='review-form' noValidate autoComplete='off'>
-        <TextField
-          className='title'
-          id='outlined-basic1'
-          variant='outlined'
-          label='Title'
-          color='secondary'
-          onChange={handleChangeTitle}
-        />
+    const handlePosterLinkInput = (event) => {
+      posterLink = event.target.value;
 
-        <TextField
-          className='review'
-          multiline
-          id='outlined-multiline-static'
-          label='Review'
-          variant='outlined'
-          rows={15}
-          color='secondary'
-          onChange={handleChangeReview}
-        />
+      const regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+      if (!regex.test(posterLink)) {
+        this.setState({
+          posterLinkFormatErr: true,
+          errorMsg: 'Please, enter valid http poster URL'
+        })
+      } else {
+        addMoviePosterLink(posterLink);
+        this.setState({
+          posterLinkFormatErr: false,
+          errorMsg: 'Valid URL'
+        })
+      }
+    };
 
-        <TextField
-          className='poster'
-          id='outlined-basic2'
-          variant='outlined'
-          label='Upload poster via Link'
-          color='secondary'
-          onChange={handlePosterLinkInput}
-        />
-
-        <Button
-          color='secondary'
-          variant='contained'
-          onClick={handleUploadPoster}
-        >
-          Save Poster
-        </Button>
-
-        {/* <div className='upload-img'>
-          <input
-            disabled
-            accept='image/*'
-            id='contained-button-file'
-            multiple
-            type='file'
+    return (
+      <div>
+        <form className='review-form' noValidate autoComplete='off' noValidate>
+          <TextField
+            className='title'
+            id='outlined-basic1'
+            variant='outlined'
+            label='Title'
+            color='secondary'
+            onChange={handleChangeTitle}
           />
-          <label htmlFor='contained-button-file'>
-            <Button variant='contained' component='span' disabled>
-              Upload
-            </Button>
-          </label>
-        </div> */}
-      </form>
-    </div>
-  );
-};
+
+          <TextField
+            className='review'
+            multiline
+            id='outlined-multiline-static'
+            label='Review'
+            variant='outlined'
+            rows={15}
+            color='secondary'
+            onChange={handleChangeReview}
+          />
+
+          <TextField
+            error={this.state.posterLinkFormatErr}
+            helperText={this.state.errorMsg}
+            className='poster'
+            id='outlined-basic2'
+            variant='outlined'
+            label='Upload poster via Link'
+            color='secondary'
+            onChange={handlePosterLinkInput}
+          />
+
+          {/* <div className='upload-img'>
+            <input
+              disabled
+              accept='image/*'
+              id='contained-button-file'
+              multiple
+              type='file'
+            />
+            <label htmlFor='contained-button-file'>
+              <Button variant='contained' component='span' disabled>
+                Upload
+              </Button>
+            </label>
+          </div> */}
+        </form>
+      </div>
+    );
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   addMovieTitle: (title) => dispatch(addMovieTitle(title)),

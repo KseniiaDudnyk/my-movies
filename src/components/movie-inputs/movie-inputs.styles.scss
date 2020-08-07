@@ -8,14 +8,9 @@
   margin-top: 2%;
 
   .title,
-  .review {
+  .review, .poster {
     width: $input-field-width;
     margin-bottom: $base-margin;
-  }
-
-  .poster {
-    width: $input-field-width - 20%;
-    margin-right: $base-margin;
   }
 
   Button:hover {

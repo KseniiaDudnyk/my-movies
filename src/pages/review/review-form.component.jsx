@@ -12,16 +12,11 @@ const ReviewForm = ({ location }) => {
   let headerText = '';
   let type = location.pathname;
 
-  const handleHeader = () => {
-    if (type === '/review') {
-      headerText = 'Add your thoughts about just watched movie';
-    } else if (type === '/add-to-watch') {
-      headerText = 'Add movie to watch in the future';
-    }
-    return headerText;
-  };
-
-  handleHeader();
+  if (type === '/review') {
+    headerText = 'Add your thoughts about just watched movie';
+  } else if (type === '/add-to-watch') {
+    headerText = 'Add movie to watch in the future';
+  }
 
   return (
     <div>

@@ -71,6 +71,7 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth();
     this.unsubscribeFromMoviesDataSnapshot();
+    this.unsubscribeFromMovieGenresSnapshot();
   }
 
   render() {
