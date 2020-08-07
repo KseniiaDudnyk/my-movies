@@ -57,11 +57,12 @@ export const convertMovieGenresSnapshotToMap = (genres) => {
   let id = 0;
 
   genresDataFromFirebase[0].map((genre) => {
-    const obj = new Object();
+    const obj = {};
     obj['name'] = genre;
     obj['id'] = id++;
 
     genresObjArr.push(obj);
+    return obj;
   });
   
   return genresObjArr;

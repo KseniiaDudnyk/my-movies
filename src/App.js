@@ -21,7 +21,6 @@ import {
   getMovieGenres,
 } from './redux/movies-data/movies-data.actions';
 import {
-  genresArr,
   convertMoviesDataSnapshotToMap,
   convertMovieGenresSnapshotToMap,
   firestore,

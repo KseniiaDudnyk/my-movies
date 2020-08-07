@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './movie-inputs.styles.scss';
 
-import { TextField, Button } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import {
   addMovieTitle,
   addMovieReviewText,
@@ -60,7 +60,7 @@ class MovieInputs extends React.Component {
 
     return (
       <div>
-        <form className='review-form' noValidate autoComplete='off' noValidate>
+        <form className='review-form' noValidate autoComplete='off'>
           <TextField
             className='title'
             id='outlined-basic1'
