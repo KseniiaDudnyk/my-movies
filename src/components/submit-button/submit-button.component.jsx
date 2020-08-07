@@ -49,14 +49,6 @@ const SubmitButton = ({
   };
 
   const submitMovie = () => {
-    let genresArr = movieGenres.map((genre) => Object.keys(genre));
-
-    let currentMovieTitle = movieTitle;
-    let currentMovieReview = movieReview;
-    let currentMovieGenres = genresArr.flat();
-    let currentMovieRate = movieRate;
-    let currentMoviePosterLink = moviePosterLink;
-    let currentIsMovieFavorite = isMovieFavorite;
     let currentIsWatched;
     createId();
 
@@ -67,21 +59,21 @@ const SubmitButton = ({
     }
 
     if (
-      !currentMovieTitle ||
-      !currentMovieReview ||
-      currentMovieGenres.length === 0
+      !movieTitle ||
+      !movieReview ||
+      movieGenres.length === 0
     ) {
       setOpen(true);
     } else {
       addMovieReview({
         id: id,
-        title: currentMovieTitle,
-        review: currentMovieReview,
-        genres: currentMovieGenres,
-        rate: currentMovieRate,
-        posterUrl: currentMoviePosterLink,
+        title: movieTitle,
+        review: movieReview,
+        genres: movieGenres,
+        rate: movieRate,
+        posterUrl: moviePosterLink,
         isReviewTextHidden: true,
-        isFavorite: currentIsMovieFavorite,
+        isFavorite: isMovieFavorite,
         isWatched: currentIsWatched,
       });
       resetReviewInputReducerData();

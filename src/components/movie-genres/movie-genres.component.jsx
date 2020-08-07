@@ -24,22 +24,18 @@ const MovieGenres = ({ addMovieGenre, genresArr }) => {
     let checked = event.target.checked;
 
     if (!checked) {
-      let indexOfGenreToRemove = selectedGenres
-        .map((genre) => {
-          return genre[name];
-        })
-        .indexOf(true);
+      let indexOfGenreToRemove = selectedGenres.indexOf(name);
 
       selectedGenres.splice(indexOfGenreToRemove, 1);
     } else {
-      selectedGenres.push({ [name]: checked });
+      selectedGenres.push(name);
     }
     addMovieGenre(selectedGenres);
   };
 
   return (
     <div className='checkboxes-container'>
-      <FormLabel component='legend'>Select movie genres</FormLabel>
+      <FormLabel component='legend'>Select movie genres *</FormLabel>
       <FormGroup row style={{ justifyContent: 'space-between' }}>
         {genresArr ? (
           genresArr.map((genre) => (

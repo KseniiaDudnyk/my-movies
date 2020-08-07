@@ -28,7 +28,7 @@ const MovieRate = ({ addMovieRate }) => {
   return (
     <div className='rate-container'>
       <FormControl component='fieldset'>
-        <FormLabel component='legend'>Rate the movie</FormLabel>
+        <FormLabel component='legend'>Rate the movie *</FormLabel>
         <RadioGroup
           className='radio-group'
           aria-label='rate'

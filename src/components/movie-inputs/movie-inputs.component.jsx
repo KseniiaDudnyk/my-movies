@@ -68,6 +68,7 @@ class MovieInputs extends React.Component {
             label='Title'
             color='secondary'
             onChange={handleChangeTitle}
+            required
           />
 
           <TextField
@@ -79,6 +80,7 @@ class MovieInputs extends React.Component {
             rows={15}
             color='secondary'
             onChange={handleChangeReview}
+            required
           />
 
           <TextField
