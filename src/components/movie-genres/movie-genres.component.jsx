@@ -9,6 +9,7 @@ import {
   FormControlLabel,
   FormLabel,
   Checkbox,
+  CircularProgress
 } from '@material-ui/core';
 
 import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
@@ -52,7 +53,7 @@ const MovieGenres = ({ addMovieGenre, genresArr }) => {
             />
           ))
         ) : (
-          <h1>Please, wait</h1>
+          <CircularProgress className='spinner' />
         )}
       </FormGroup>
     </div>

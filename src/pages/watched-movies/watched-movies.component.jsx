@@ -7,7 +7,7 @@ import './watched-movies.styles.scss';
 import { selectMovies } from '../../redux/movies-data/movies-data.selectors';
 import MovieCard from '../../components/movie-card/movie-card.component';
 import Header from '../../components/header/header.component';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 
 const WatchedMovies = ({ movies }) => (
   <div>
@@ -29,7 +29,7 @@ const WatchedMovies = ({ movies }) => (
           })}
         </Grid>
       ) : (
-        <div>Please,wait</div>
+        <CircularProgress />
       )}
     </div>
   </div>
