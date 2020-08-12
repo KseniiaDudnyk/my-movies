@@ -50,22 +50,8 @@ export const convertMoviesDataSnapshotToMap = (moviesData) => {
 export const convertMovieGenresSnapshotToMap = (genres) => {
   const genresObjArr = [];
 
-  const genresDataFromFirebase = genres.docs.map((doc) => {
-    return doc.data().name;
-  });
+  genres.docs.map((doc) => genresObjArr.push(doc.data()));
 
-  let id = 0;
-
-  genresDataFromFirebase[0].map((genre) => {
-    const obj = {};
-    obj['name'] = genre;
-    obj['id'] = id++;
-    obj['isSelected'] = false;
-
-    genresObjArr.push(obj);
-    return obj;
-  });
-  
   return genresObjArr;
 };
 

@@ -9,29 +9,42 @@ import {
   FormControlLabel,
   FormLabel,
   Checkbox,
-  CircularProgress
+  CircularProgress,
 } from '@material-ui/core';
 
-import { addMovieGenre } from '../../redux/review-inputs/review-inputs.actions';
+import {
+  addMovieGenre,
+  removeMovieGenre,
+} from '../../redux/review-inputs/review-inputs.actions';
+import { selectMovieGenres } from '../../redux/review-inputs/review-inputs.selectors';
 import { selectMoviesGenres } from '../../redux/movies-data/movies-data.selectors';
 
-const MovieGenres = ({ addMovieGenre, genresArr }) => {
+const MovieGenres = ({
+  addMovieGenre,
+  genresArr,
+  inputGenres,
+  removeMovieGenre,
+}) => {
   const [state] = React.useState({ ...genresArr });
 
-  const selectedGenres = [];
-
   const handleChange = (event) => {
-    let name = event.target.name;
+    let genreId = event.target.value;
     let checked = event.target.checked;
 
-    if (!checked) {
-      let indexOfGenreToRemove = selectedGenres.indexOf(name);
+    let genre = '';
+    genresArr.map((g) => {
+      if (g.id === genreId) {
+        genre = g;
+      }
+    });
 
-      selectedGenres.splice(indexOfGenreToRemove, 1);
+    if (!checked) {
+      let indexOfGenreToRemove = inputGenres.indexOf(genre);
+      inputGenres.splice(indexOfGenreToRemove, 1);
+      removeMovieGenre(inputGenres);
     } else {
-      selectedGenres.push(name);
+      addMovieGenre(genre);
     }
-    addMovieGenre(selectedGenres);
   };
 
   return (
@@ -47,6 +60,7 @@ const MovieGenres = ({ addMovieGenre, genresArr }) => {
                   checked={state.genre}
                   onChange={handleChange}
                   name={genre.name}
+                  value={genre.id}
                 />
               }
               label={genre.name}
@@ -62,10 +76,12 @@ const MovieGenres = ({ addMovieGenre, genresArr }) => {
 
 const mapStateToProps = createStructuredSelector({
   genresArr: selectMoviesGenres,
+  inputGenres: selectMovieGenres,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addMovieGenre: (genre) => dispatch(addMovieGenre(genre)),
+  addMovieGenre: (genreId) => dispatch(addMovieGenre(genreId)),
+  removeMovieGenre: (genreId) => dispatch(removeMovieGenre(genreId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieGenres);

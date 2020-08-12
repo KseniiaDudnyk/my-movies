@@ -21,7 +21,13 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
     case ReviewActionTypes.ADD_MOVIE_GENRE:
       return {
         ...state,
-        movieGenres: [...state.movieGenres, action.payload],
+        movieGenres: [...state.movieGenres, action.payload]
+      };
+
+    case ReviewActionTypes.REMOVE_MOVIE_GENRE:
+      return {
+        ...state,
+        movieGenres:  action.payload
       };
 
     case ReviewActionTypes.ADD_MOVIE_TITLE:

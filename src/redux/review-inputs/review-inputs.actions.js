@@ -5,9 +5,14 @@ export const addMovieRate = (rate) => ({
   payload: rate,
 });
 
-export const addMovieGenre = (genres) => ({
+export const addMovieGenre = (genreId) => ({
   type: ReviewActionTypes.ADD_MOVIE_GENRE,
-  payload: genres,
+  payload: genreId,
+});
+
+export const removeMovieGenre = (genreId) => ({
+  type: ReviewActionTypes.REMOVE_MOVIE_GENRE,
+  payload: genreId,
 });
 
 export const addMovieTitle = (title) => ({

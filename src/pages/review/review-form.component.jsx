@@ -27,7 +27,7 @@ const ReviewForm = ({ location, reviewInputs }) => {
     <div>
       <Header text={headerText} />
       <MovieInputs inputs={reviewInputs} />
-      <MovieGenres inputGenres={reviewInputs.movieGenres} />
+      <MovieGenres />
       {type === '/review' ? <MovieRate /> : null}
       <SubmitButton type={type} />
     </div>
