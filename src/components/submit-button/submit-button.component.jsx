@@ -65,6 +65,8 @@ const SubmitButton = ({
     ) {
       setOpen(true);
     } else {
+      movieGenres.forEach(genre => genre.isSelected = true);
+      
       addMovieReview({
         id: id,
         title: movieTitle,

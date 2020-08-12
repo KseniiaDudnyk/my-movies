@@ -39,8 +39,8 @@ const Unfold = ({ isHidden, movie, toggleReviewTextHidden }) => (
             return (
               <Chip
                 variant='outlined'
-                key={`${movie.id}${genre}`}
-                label={genre}
+                key={`${movie.id}${genre.id}`}
+                label={genre.name}
               />
             );
           })}
