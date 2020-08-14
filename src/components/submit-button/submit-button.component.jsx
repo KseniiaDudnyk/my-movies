@@ -9,30 +9,29 @@ import { Button } from '@material-ui/core';
 
 import SimpleDialog from '../simple-dialog/simple-dialog.component';
 
-import {
-  selectMovieRate,
-  selectMovieGenres,
-  selectMovieTitle,
-  selectMovieReview,
-  selectMoviePosterLink,
-  selectIsMovieFavorite,
-} from '../../redux/review-inputs/review-inputs.selectors';
+import { selectInputsForReview } from '../../redux/review-inputs/review-inputs.selectors';
 import { resetReviewInputReducerData } from '../../redux/review-inputs/review-inputs.actions';
-import { addMovieReview } from '../../redux/movies-data/movies-data.actions';
+import {
+  addMovieReview,
+  leaveReview,
+} from '../../redux/movies-data/movies-data.actions';
 
 const SubmitButton = ({
   history,
-  movieRate,
-  movieGenres,
-  movieTitle,
-  movieReview,
-  moviePosterLink,
   addMovieReview,
   resetReviewInputReducerData,
-  isMovieFavorite,
+  reviewInputs,
+  leaveReview,
   type,
 }) => {
-  let id;
+  const {
+    id,
+    movieRate,
+    movieGenres,
+    movieTitle,
+    movieReview,
+    moviePosterLink,
+  } = reviewInputs;
 
   const [open, setOpen] = React.useState(false);
 
@@ -45,42 +44,57 @@ const SubmitButton = ({
   };
 
   const createId = () => {
-    return (id = `0000${movieTitle}`);
+    return `0000${movieTitle}`;
   };
 
-  const submitMovie = () => {
-    let currentIsWatched;
-    createId();
-
+  const defineWatchedStatus = () => {
     if (type === '/review') {
-      currentIsWatched = true;
+      return true;
     } else if (type === '/add-to-watch') {
-      currentIsWatched = false;
+      return false;
     }
+  };
 
-    if (
-      !movieTitle ||
-      !movieReview ||
-      movieGenres.length === 0
-    ) {
+  const createNewReview = () => {
+    if (!movieTitle || !movieReview || movieGenres.length === 0) {
       setOpen(true);
     } else {
-      movieGenres.forEach(genre => genre.isSelected = true);
-      
+      movieGenres.forEach((genre) => (genre.isSelected = true));
+
       addMovieReview({
-        id: id,
+        id: createId(),
         title: movieTitle,
         review: movieReview,
         genres: movieGenres,
         rate: movieRate,
         posterUrl: moviePosterLink,
         isReviewTextHidden: true,
-        isFavorite: isMovieFavorite,
-        isWatched: currentIsWatched,
+        isWatched: defineWatchedStatus(),
       });
-      resetReviewInputReducerData();
-      redirect();
     }
+  };
+
+  const addReviewToNextToWatched = () => {
+    leaveReview({
+      id: id,
+      // genres:movieGenres,
+      review: movieReview,
+      rate: movieRate,
+    });
+  };
+
+  const submitMovie = () => {
+    createId();
+    defineWatchedStatus();
+
+    if (id) {
+      addReviewToNextToWatched();
+    } else {
+      createNewReview();
+    }
+
+    resetReviewInputReducerData();
+    redirect();
   };
 
   return (
@@ -99,16 +113,12 @@ const SubmitButton = ({
 
 const mapDispatchToProps = (dispatch) => ({
   addMovieReview: (review) => dispatch(addMovieReview(review)),
+  leaveReview: (reviewUpdates) => dispatch(leaveReview(reviewUpdates)),
   resetReviewInputReducerData: () => dispatch(resetReviewInputReducerData()),
 });
 
 const mapStateToProps = createStructuredSelector({
-  movieRate: selectMovieRate,
-  movieGenres: selectMovieGenres,
-  movieTitle: selectMovieTitle,
-  movieReview: selectMovieReview,
-  moviePosterLink: selectMoviePosterLink,
-  isMovieFavorite: selectIsMovieFavorite,
+  reviewInputs: selectInputsForReview,
 });
 
 export default withRouter(

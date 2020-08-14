@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   movieReview: '',
   moviePosterLink: '',
   isFavorite: false,
+  id: ''
 };
 
 const reviewReducer = (state = INITIAL_STATE, action) => {
@@ -57,9 +58,10 @@ const reviewReducer = (state = INITIAL_STATE, action) => {
         isFavorite: !state.isFavorite,
       };
 
-    case MoviesDataActionTypes.LEAVE_REVIEW:
+    case MoviesDataActionTypes.SELECT_FOR_REVIEW:
       return {
         ...state,
+        id:action.payload.id,
         movieGenres: action.payload.genres,
         movieTitle: action.payload.title,
         moviePosterLink: action.payload.posterUrl,

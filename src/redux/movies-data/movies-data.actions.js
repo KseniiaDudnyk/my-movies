@@ -20,9 +20,9 @@ export const toggleReviewTextHidden = (movieId) => ({
   payload: movieId,
 });
 
-export const selectWatched = (movieId) => ({
-  type: MoviesDataActionTypes.SELECT_WATCHED,
-  payload: movieId,
+export const selectForReview = (movie) => ({
+  type: MoviesDataActionTypes.SELECT_FOR_REVIEW,
+  payload: movie,
 });
 
 export const leaveReview = (movie) => ({

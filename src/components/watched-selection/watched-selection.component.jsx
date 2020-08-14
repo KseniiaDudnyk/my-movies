@@ -1,21 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { useSnackbar } from 'notistack';
 import { withRouter } from 'react-router-dom';
 
 import './watched-selection.styles.scss';
 
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 import { IconButton, Tooltip } from '@material-ui/core';
-import { leaveReview } from '../../redux/movies-data/movies-data.actions';
+import { selectForReview } from '../../redux/movies-data/movies-data.actions';
 
-const WatchedSelection = ({ leaveReview, isWatched, movie, history }) => {
-  const { enqueueSnackbar } = useSnackbar();  
-
-  const handleClick = () => {
-    enqueueSnackbar(`${movie.title} is removed to watched movies`);
-    
-    leaveReview(movie);
+const WatchedSelection = ({ selectForReview, isWatched, movie, history }) => {
+  const handleClick = () => {    
+    selectForReview(movie);
 
     history.push('/review');
   };
@@ -36,7 +31,7 @@ const WatchedSelection = ({ leaveReview, isWatched, movie, history }) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  leaveReview: (movie) => dispatch(leaveReview(movie)),
+  selectForReview: (movie) => dispatch(selectForReview(movie)),
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(WatchedSelection));

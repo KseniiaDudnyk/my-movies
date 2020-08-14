@@ -60,14 +60,16 @@ const moviesDataReducer = (state = INITIAL_STATE, action) => {
         }),
       };
 
-    case MoviesDataActionTypes.SELECT_WATCHED:
+    case MoviesDataActionTypes.LEAVE_REVIEW:
       return {
         ...state,
         movies: state.movies.map((el) => {
-          if (el.id === action.payload) {
+          if (el.id === action.payload.id) {
             return {
               ...el,
               isWatched: true,
+              review: action.payload.review,
+              rate: action.payload.rate
             };
           } else {
             return {
