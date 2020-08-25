@@ -1,104 +1,90 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
-import './movie-inputs.styles.scss';
+import "./movie-inputs.styles.scss";
 
-import { TextField } from '@material-ui/core';
+import { TextField } from "@material-ui/core";
 import {
   addMovieTitle,
   addMovieReviewText,
   addMoviePosterLink,
-} from '../../redux/review-inputs/review-inputs.actions';
+} from "../../redux/review-inputs/review-inputs.actions";
+import { selectInputsForReview } from "../../redux/review-inputs/review-inputs.selectors";
 
-class MovieInputs extends React.Component {
-  constructor(props) {
-    super(props);
+const MovieInputs = ({
+  addMovieTitle,
+  addMovieReviewText,
+  addMoviePosterLink,
+  inputs,
+}) => {
+  const [posterLinkFormatErr, setPosterLinkFormatErr] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-    this.state = {
-      posterLinkFormatErr: false,
-      errorMsg: ''
+  // fileUploadHandler = (event) => {
+  //     selectedFile: event.target.files[0],
+  // };
+
+  const handleChangeTitle = (event) => {
+    addMovieTitle(event.target.value);
+  };
+
+  const handleChangeReview = (event) => {
+    addMovieReviewText(event.target.value);
+  };
+
+  const handlePosterLinkInput = (event) => {
+    const regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    if (!regex.test(event.target.value)) {
+      setPosterLinkFormatErr(true);
+      setErrorMsg("Please, enter valid http poster URL");
+    } else {
+      addMoviePosterLink(event.target.value);
+      setPosterLinkFormatErr(false);
+      setErrorMsg("");
     }
-  }
-  
-  render() {
-    const {
-      addMovieTitle,
-      addMovieReviewText,
-      addMoviePosterLink,
-      inputs
-    } = this.props;    
+  };
 
-    // fileUploadHandler = (event) => {
-    //     selectedFile: event.target.files[0],
-    // };
-    let posterLink = '';
+  return (
+    <div>
+      <form className="review-form" noValidate autoComplete="off">
+        <TextField
+          className="title"
+          id="outlined-basic1"
+          variant="outlined"
+          label="Title"
+          color="secondary"
+          onChange={handleChangeTitle}
+          value={inputs.movieTitle}
+          required
+        />
 
-    const handleChangeTitle = (event) => {
-      addMovieTitle(event.target.value);
-    };
+        <TextField
+          className="review"
+          multiline
+          id="outlined-multiline-static"
+          label="Review"
+          variant="outlined"
+          rows={15}
+          color="secondary"
+          onChange={handleChangeReview}
+          value={inputs.movieReview}
+          required
+        />
 
-    const handleChangeReview = (event) => {
-      addMovieReviewText(event.target.value);
-    };
+        <TextField
+          error={posterLinkFormatErr}
+          helperText={errorMsg}
+          className="poster"
+          id="outlined-basic2"
+          variant="outlined"
+          label="Upload poster via Link"
+          color="secondary"
+          onChange={handlePosterLinkInput}
+          value={inputs.moviePosterLink}
+        />
 
-    const handlePosterLinkInput = (event) => {
-      posterLink = event.target.value;
-
-      const regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
-      if (!regex.test(posterLink)) {
-        this.setState({
-          posterLinkFormatErr: true,
-          errorMsg: 'Please, enter valid http poster URL'
-        })
-      } else {
-        addMoviePosterLink(posterLink);
-        this.setState({
-          posterLinkFormatErr: false,
-          errorMsg: 'Valid URL'
-        })
-      }
-    };
-
-    return (
-      <div>
-        <form className='review-form' noValidate autoComplete='off'>
-          <TextField
-            className='title'
-            id='outlined-basic1'
-            variant='outlined'
-            label='Title'
-            color='secondary'
-            onChange={handleChangeTitle}
-            value={inputs.movieTitle}
-            required
-          />
-
-          <TextField
-            className='review'
-            multiline
-            id='outlined-multiline-static'
-            label='Review'
-            variant='outlined'
-            rows={15}
-            color='secondary'
-            onChange={handleChangeReview}
-            value={inputs.movieReview}
-            required
-          />
-
-          <TextField
-            error={this.state.posterLinkFormatErr}
-            helperText={this.state.errorMsg}
-            className='poster'
-            id='outlined-basic2'
-            variant='outlined'
-            label='Upload poster via Link'
-            color='secondary'
-            onChange={handlePosterLinkInput}
-            value={inputs.moviePosterLink}
-          />
-
-          {/* <div className='upload-img'>
+        {/* <div className='upload-img'>
             <input
               disabled
               accept='image/*'
@@ -112,11 +98,10 @@ class MovieInputs extends React.Component {
               </Button>
             </label>
           </div> */}
-        </form>
-      </div>
-    );
-  }
-}
+      </form>
+    </div>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
   addMovieTitle: (title) => dispatch(addMovieTitle(title)),
@@ -124,4 +109,8 @@ const mapDispatchToProps = (dispatch) => ({
   addMoviePosterLink: (link) => dispatch(addMoviePosterLink(link)),
 });
 
-export default connect(null, mapDispatchToProps)(MovieInputs);
+const mapStateToProps = createStructuredSelector({
+  inputs: selectInputsForReview,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInputs);

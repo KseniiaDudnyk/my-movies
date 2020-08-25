@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 
 import './review-form.styles.scss';
 
@@ -9,9 +7,8 @@ import MovieGenres from '../../components/movie-genres/movie-genres.component';
 import MovieRate from '../../components/movie-rate/movie-rate.component';
 import SubmitButton from '../../components/submit-button/submit-button.component';
 import Header from '../../components/header/header.component';
-import { selectInputsForReview } from '../../redux/review-inputs/review-inputs.selectors';
 
-const ReviewForm = ({ location, reviewInputs }) => {
+const ReviewForm = ({ location }) => {
   let headerText = '';
   let type = location.pathname;
 
@@ -20,13 +17,10 @@ const ReviewForm = ({ location, reviewInputs }) => {
   } else if (type === '/add-to-watch') {
     headerText = 'Add movie to watch in the future';
   }
-
-  console.log(reviewInputs);
-
   return (
     <div>
       <Header text={headerText} />
-      <MovieInputs inputs={reviewInputs} />
+      <MovieInputs />
       <MovieGenres />
       {type === '/review' ? <MovieRate /> : null}
       <SubmitButton type={type} />
@@ -34,8 +28,4 @@ const ReviewForm = ({ location, reviewInputs }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  reviewInputs: selectInputsForReview,
-});
-
-export default connect(mapStateToProps)(ReviewForm);
+export default ReviewForm;

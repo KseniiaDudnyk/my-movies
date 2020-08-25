@@ -55,6 +55,7 @@ const SubmitButton = ({
     }
   };
 
+  //todo add check foe empty review and title with id
   const createNewReview = () => {
     if (!movieTitle || !movieReview || movieGenres.length === 0) {
       setOpen(true);
