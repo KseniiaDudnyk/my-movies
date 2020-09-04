@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './sign-up.styles.scss';
 
@@ -17,7 +17,7 @@ import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 import Header from '../header/header.component';
 
 const SignUp = () => {
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     email: '',
     password: '',
     confirmPassword: '',

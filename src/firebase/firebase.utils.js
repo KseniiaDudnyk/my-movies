@@ -40,9 +40,7 @@ export const createUserProfileDocument = async (userAuth, data) => {
 };
 
 export const convertMoviesDataSnapshotToMap = (moviesData) => {
-  const transformedMoviesData = moviesData.docs.map((doc) => {
-    return doc.data();
-  });
+  const transformedMoviesData = moviesData.docs.map((doc) => doc.data());
 
   return transformedMoviesData;
 };

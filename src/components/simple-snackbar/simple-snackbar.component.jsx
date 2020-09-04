@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './simple-snackbar.styles.scss';
 
 import Snackbar from '@material-ui/core/Snackbar';
 
 const SimpleSnackbar = ({ message, open, handleClose }) => {
-  const [state] = React.useState({
+  const [state] = useState({
     open: false,
     vertical: 'top',
     horizontal: 'center',

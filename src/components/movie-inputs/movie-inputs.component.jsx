@@ -17,6 +17,7 @@ const MovieInputs = ({
   addMovieReviewText,
   addMoviePosterLink,
   inputs,
+  dispatch
 }) => {
   const [posterLinkFormatErr, setPosterLinkFormatErr] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
@@ -34,7 +35,7 @@ const MovieInputs = ({
   };
 
   const handlePosterLinkInput = (event) => {
-    const regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    const regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!-]))?/;
     if (!regex.test(event.target.value)) {
       setPosterLinkFormatErr(true);
       setErrorMsg("Please, enter valid http poster URL");

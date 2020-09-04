@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
-import './menu.styles.scss';
+import "./menu.styles.scss";
 
 import {
   Button,
@@ -11,12 +11,12 @@ import {
   Popper,
   MenuItem,
   MenuList,
-} from '@material-ui/core';
-import { auth } from '../../firebase/firebase.utils';
+} from "@material-ui/core";
+import { auth } from "../../firebase/firebase.utils";
 
 const Menu = () => {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -31,14 +31,14 @@ const Menu = () => {
   };
 
   function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
     }
   }
 
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
@@ -50,8 +50,8 @@ const Menu = () => {
     <div>
       <Button
         ref={anchorRef}
-        aria-controls={open ? 'menu-list-grow' : undefined}
-        aria-haspopup='true'
+        aria-controls={open ? "menu-list-grow" : undefined}
+        aria-haspopup="true"
         onClick={handleToggle}
       >
         Menu
@@ -68,22 +68,22 @@ const Menu = () => {
             {...TransitionProps}
             style={{
               transformOrigin:
-                placement === 'bottom' ? 'center top' : 'center bottom',
+                placement === "bottom" ? "center top" : "center bottom",
             }}
           >
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={open}
-                  id='menu-list-grow'
+                  id="menu-list-grow"
                   onKeyDown={handleListKeyDown}
                 >
-                  <MenuItem to='/' component={Link} onClick={handleClose}>
+                  <MenuItem to="/" component={Link} onClick={handleClose}>
                     Home
                   </MenuItem>
 
                   <MenuItem
-                    to='/profile'
+                    to="/profile"
                     component={Link}
                     onClick={handleClose}
                   >

@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 
-import './movie-genres.styles.scss';
+import "./movie-genres.styles.scss";
 
 import {
   FormGroup,
@@ -10,14 +10,14 @@ import {
   FormLabel,
   Checkbox,
   CircularProgress,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 import {
   addMovieGenre,
   removeMovieGenre,
-} from '../../redux/review-inputs/review-inputs.actions';
-import { selectMovieGenres } from '../../redux/review-inputs/review-inputs.selectors';
-import { selectMoviesGenres } from '../../redux/movies-data/movies-data.selectors';
+} from "../../redux/review-inputs/review-inputs.actions";
+import { selectMovieGenres } from "../../redux/review-inputs/review-inputs.selectors";
+import { selectMoviesGenres } from "../../redux/movies-data/movies-data.selectors";
 
 const MovieGenres = ({
   addMovieGenre,
@@ -25,17 +25,18 @@ const MovieGenres = ({
   inputGenres,
   removeMovieGenre,
 }) => {
-  const [state] = React.useState({ ...genresArr });
+  const [genres] = useState({ ...genresArr });
 
   const handleChange = (event) => {
     let genreId = event.target.value;
     let checked = event.target.checked;
 
-    let genre = '';
-    genresArr.map((g) => {
-      if (g.id === genreId) {
-        genre = g;
+    let genre;
+    genresArr.map((genreEl) => {
+      if (genreEl.id === genreId) {
+        genre = genreEl;
       }
+      return genre;
     });
 
     if (!checked) {
@@ -48,16 +49,16 @@ const MovieGenres = ({
   };
 
   return (
-    <div className='checkboxes-container'>
-      <FormLabel component='legend'>Select movie genres *</FormLabel>
-      <FormGroup row style={{ justifyContent: 'space-between' }}>
+    <div className="checkboxes-container">
+      <FormLabel component="legend">Select movie genres *</FormLabel>
+      <FormGroup row style={{ justifyContent: "space-between" }}>
         {genresArr ? (
           genresArr.map((genre) => (
             <FormControlLabel
               key={genre.id}
               control={
                 <Checkbox
-                  checked={state.genre}
+                  checked={genres.genre}
                   onChange={handleChange}
                   name={genre.name}
                   value={genre.id}
@@ -67,7 +68,7 @@ const MovieGenres = ({
             />
           ))
         ) : (
-          <CircularProgress className='spinner' />
+          <CircularProgress className="spinner" />
         )}
       </FormGroup>
     </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './sign-in.styles.scss';
 
@@ -17,7 +17,7 @@ import SimpleDialog from '../../components/simple-dialog/simple-dialog.component
 import Header from '../header/header.component';
 
 const SignIn = () => {
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     email: '',
     password: '',
     showPassword: false,

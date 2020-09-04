@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
@@ -33,7 +33,7 @@ const SubmitButton = ({
     moviePosterLink,
   } = reviewInputs;
 
-  const [open, setOpen] = React.useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const redirect = () => {
     if (type === '/review') {
@@ -58,7 +58,7 @@ const SubmitButton = ({
   //todo add check foe empty review and title with id
   const createNewReview = () => {
     if (!movieTitle || !movieReview || movieGenres.length === 0) {
-      setOpen(true);
+      setOpenDialog(true);
     } else {
       movieGenres.forEach((genre) => (genre.isSelected = true));
 
@@ -78,7 +78,7 @@ const SubmitButton = ({
   const addReviewToNextToWatched = () => {
     leaveReview({
       id: id,
-      // genres:movieGenres,
+      genres:movieGenres,
       review: movieReview,
       rate: movieRate,
     });
@@ -104,8 +104,8 @@ const SubmitButton = ({
         Save Movie
       </Button>
       <SimpleDialog
-        open={open}
-        onClose={() => setOpen(false)}
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
         message='Please fill the form'
       />
     </div>

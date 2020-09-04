@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import './movie-rate.styles.scss';
@@ -14,11 +14,11 @@ import {
 import { addMovieRate } from '../../redux/review-inputs/review-inputs.actions';
 
 const MovieRate = ({ addMovieRate }) => {
+  const [value, setValue] = useState('');
+
   const rateArr = Array(10)
     .fill(1)
     .map((i, idx) => (idx + i).toString());
-
-  const [value, setValue] = React.useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);

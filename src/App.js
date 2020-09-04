@@ -32,6 +32,7 @@ class App extends React.Component {
   unsubscribeFromMovieGenresSnapshot = null;
 
   componentDidMount() {
+    console.log('App');
     const { getCurrentUser, getMovies, getMovieGenres } = this.props;
 
     const moviesDataRef = firestore.collection('movies-data');
