@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -25,26 +25,27 @@ const MovieGenres = ({
   inputGenres,
   removeMovieGenre,
 }) => {
-  const [genres] = useState({ ...genresArr });
+  const [genreCheck, setGenreCheck] = useState({ ...genresArr });
 
   const handleChange = (event) => {
     let genreId = event.target.value;
     let checked = event.target.checked;
+    let selectedGenre;
 
-    let genre;
-    genresArr.map((genreEl) => {
-      if (genreEl.id === genreId) {
-        genre = genreEl;
+    genresArr.forEach((genre) => {
+      if (genre.id === genreId) {
+        genre.isSelected = checked;
+        selectedGenre = genre;
       }
-      return genre;
     });
+    setGenreCheck({ ...genresArr });
 
     if (!checked) {
-      let indexOfGenreToRemove = inputGenres.indexOf(genre);
+      let indexOfGenreToRemove = inputGenres.indexOf(selectedGenre);
       inputGenres.splice(indexOfGenreToRemove, 1);
       removeMovieGenre(inputGenres);
     } else {
-      addMovieGenre(genre);
+      addMovieGenre(selectedGenre);
     }
   };
 
@@ -58,7 +59,7 @@ const MovieGenres = ({
               key={genre.id}
               control={
                 <Checkbox
-                  checked={genres.genre}
+                  checked={genreCheck.genre}
                   onChange={handleChange}
                   name={genre.name}
                   value={genre.id}

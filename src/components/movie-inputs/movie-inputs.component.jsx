@@ -16,8 +16,7 @@ const MovieInputs = ({
   addMovieTitle,
   addMovieReviewText,
   addMoviePosterLink,
-  inputs,
-  dispatch
+  inputs
 }) => {
   const [posterLinkFormatErr, setPosterLinkFormatErr] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
