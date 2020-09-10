@@ -1,35 +1,57 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import movieDefault from '../../assets/images/movie-default.jpg';
+import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import movieDefault from "../../assets/images/movie-default-picture.jpg";
 
-import './user-profile.styles.scss';
+import "./user-profile.styles.scss";
 
-import { TextField, Avatar } from '@material-ui/core';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { Avatar, CircularProgress, Button } from "@material-ui/core";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import EditableTextField from "../../components/editable-textfield/editable-textfield.component";
 
-const UserProfile = ({ user }) => (
-  <div className='profile-container'>
+const UserProfile = ({ user, history, dispatch }) => (
+  <div className="profile-container">
     {user ? (
-      <div className='profile'>
+      <div className="profile">
         <Avatar
           alt={user.displayName}
           src={!user.photoURL ? movieDefault : user.photoURL}
-          style={{ marginRight: 7 + 'px' }}
+          className="avatar"
         />
 
-        <form noValidate autoComplete='off'>
-          <TextField
-            id='outlined-basic2'
-            variant='outlined'
-            label='Name'
-            color='secondary'
-            defaultValue={user.displayName}
+        <div className="fields">
+          <EditableTextField
+            fieldData={user.displayName}
+            fieldLabel="Name"
+            dataName="displayName"
           />
-        </form>
+          <EditableTextField
+            fieldData={user.email}
+            fieldLabel="Email"
+            dataName="email"
+          />
+          <EditableTextField
+            fieldData={user.photoURL}
+            fieldLabel="PhotoURL"
+            dataName="photoURL"
+          />
+        </div>
+
+        <div className="buttons">
+          <Button variant="contained">Save</Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Cancel
+          </Button>
+        </div>
       </div>
     ) : (
-      <div></div>
+      <CircularProgress className="spinner" />
     )}
   </div>
 );

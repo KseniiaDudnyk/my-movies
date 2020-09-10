@@ -4,9 +4,30 @@
   justify-content: center;
 
   .profile {
-    width: 50%;
+    width: 80%;
     margin-top: 10%;
+  }
+
+  .avatar {
+    width: 200px;
+    height: 200px; 
+    margin: 0 auto;
+  }
+
+  .fields {
+    margin: 20px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .buttons {
+   display: flex;
+   justify-content: center;
+
+   Button {
+     margin: 1%;
+   }
   }
 }

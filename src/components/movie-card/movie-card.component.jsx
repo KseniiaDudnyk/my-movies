@@ -2,7 +2,7 @@ import React from 'react';
 
 import './movie-card.styles.scss';
 
-import movieDefault from '../../assets/images/movie-default.jpg';
+import movieDefault from '../../assets/images/movie-default-picture.jpg';
 
 import {
   Card,

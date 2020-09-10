@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import movieDefault from '../../assets/images/movie-default.jpg';
+import movieDefault from '../../assets/images/movie-default-picture.jpg';
 
 import './navbar.styles.scss';
 
